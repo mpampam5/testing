@@ -9,16 +9,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title><?=$title?></title>
   <!-- plugins:css -->
-  <link rel="stylesheet" href="<?=base_url()?>_template/backend/vendors/ti-icons/css/themify-icons.css">
-  <link rel="stylesheet" href="<?=base_url()?>_template/backend/vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="<?=base_url()?>_template/front/vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="<?=base_url()?>_template/front/vendors/css/vendor.bundle.base.css">
   <!-- endinject -->
   <!-- Plugin css for this page -->
   <!-- End plugin css for this page -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="<?=base_url()?>_template/backend/css/style.css">
-  <link rel="stylesheet" href="<?=base_url()?>_template/backend/css/custom.css">
+  <link rel="stylesheet" href="<?=base_url()?>_template/front/css/style.css">
+  <link rel="stylesheet" href="<?=base_url()?>_template/front/css/custom.css">
+  <link rel="stylesheet" href="<?=base_url()?>_template/front/vendors/jquery-toast-plugin/jquery.toast.min.css">
+  <link rel="stylesheet" href="<?=base_url()?>_template/front/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
   <!-- endinject -->
-  <link rel="shortcut icon" href="<?=base_url()?>_template/backend/images/favicon.png" />
+  <link rel="shortcut icon" href="<?=base_url()?>_template/front/images/favicon.png" />
+  <!-- plugins:js -->
+  <script src="<?=base_url()?>_template/front/vendors/js/vendor.bundle.base.js"></script>
+  <script src="<?=base_url()?>_template/front/vendors/jquery-toast-plugin/jquery.toast.min.js"></script>
 </head>
 
 <body>
@@ -28,8 +34,8 @@
       <nav class="navbar top-navbar col-lg-12 col-12 p-0">
         <div class="container">
           <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-            <a class="navbar-brand brand-logo" href="index.html"><img src="<?=base_url()?>_template/backend/images/logo-white.png" alt="logo"/></a>
-            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="<?=base_url()?>_template/backend/images/logo-white.png" alt="logo"/></a>
+            <a class="navbar-brand brand-logo" href="index.html"><img src="<?=base_url()?>_template/front/images/logo-white.png" alt="logo"/></a>
+            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="<?=base_url()?>_template/front/images/logo-white.png" alt="logo"/></a>
           </div>
           <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
             <ul class="navbar-nav navbar-nav-right">
@@ -92,7 +98,7 @@
         <div class="container">
           <ul class="nav page-navigation">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">
+              <a class="nav-link" href="<?=site_url("backend/dashboard")?>">
                 <i class="ti-home menu-icon"></i>
                 <span class="menu-title">Dashboard</span>
               </a>
@@ -111,8 +117,8 @@
                 <i class="menu-arrow"></i></a>
               <div class="submenu">
                 <ul class="submenu-item">
-                  <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Add Member</a></li>
-                  <li class="nav-item"><a class="nav-link" href="pages/forms/advanced_elements.html">All Member</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<?=site_url("backend/person/add")?>">Add Member</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<?=site_url("backend/person")?>">All Member</a></li>
                 </ul>
               </div>
             </li>
@@ -125,8 +131,9 @@
                 <i class="menu-arrow"></i></a>
               <div class="submenu">
                 <ul class="submenu-item">
-                  <li class="nav-item"><a class="nav-link" href="pages/apps/email.html">Invesment Status</a></li>
-                  <li class="nav-item"><a class="nav-link" href="pages/apps/calendar.html">History Dividen</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<?=site_url("backend/investment/add")?>">Send To Investment</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<?=site_url("backend/investment")?>">All Investment</a></li>
+                  <li class="nav-item"><a class="nav-link" href="pages/apps/calendar.html">Investment Profit</a></li>
                 </ul>
               </div>
             </li>
@@ -151,9 +158,9 @@
                 <i class="menu-arrow"></i></a>
               <div class="submenu">
                 <ul class="submenu-item">
-                  <li class="nav-item"><a class="nav-link" href="pages/apps/email.html">Add Deposit</a></li>
-                  <li class="nav-item"><a class="nav-link" href="pages/apps/calendar.html">Proccess</a></li>
-                  <li class="nav-item"><a class="nav-link" href="pages/apps/calendar.html">Approved</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<?=site_url("backend/deposit/add")?>">Add Deposit</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<?=site_url("backend/deposit/get/process")?>">Proccess</a></li>
+                  <li class="nav-item"><a class="nav-link" href="<?=site_url("backend/deposit/get/approved")?>">Approved</a></li>
                 </ul>
               </div>
             </li>
@@ -173,7 +180,7 @@
             </li>
 
             <li class="nav-item">
-              <a href="pages/documentation/documentation.html" class="nav-link">
+              <a href="<?=site_url("logout")?>" class="nav-link">
                 <i class="ti-power-off menu-icon"></i>
                 <span class="menu-title">Logout</span></a>
             </li>

@@ -1,0 +1,272 @@
+/* scroll */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  width: 10px;
+	background-color: #F5F5F5;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #acacac;
+}
+
+
+.horizontal-menu .top-navbar{
+  background: #192e46;
+}
+
+
+.horizontal-menu .bottom-navbar .page-navigation > .nav-item.active > .nav-link .menu-title, .horizontal-menu .bottom-navbar .page-navigation > .nav-item.active > .nav-link i, .horizontal-menu .bottom-navbar .page-navigation > .nav-item.active > .nav-link .menu-arrow{
+  color: #133a66;
+}
+
+
+.horizontal-menu .bottom-navbar .page-navigation > .nav-item > .nav-link .menu-icon{
+  color: #133a66;
+}
+
+
+.horizontal-menu .top-navbar .navbar-menu-wrapper .count-indicator .count{
+  background:#f5a623;
+  border: 1px solid #ffffff;
+}
+
+
+.breadcrumb-item{
+  color :#cecece;
+}
+
+.breadcrumb-item a{
+  color :#cecece;
+}
+
+.breadcrumb-item a:hover{
+  text-decoration: none;
+  color :#ffff;
+}
+
+.breadcrumb-item.active{
+  color : #ffcc00;
+}
+
+.bg-black, .settings-panel .color-tiles .tiles.light, .settings-panel .color-tiles .tiles.default {
+    background-color: #192e46 !important;
+}
+
+.text-yell {
+  color:#ffcc00;
+}
+
+.text-silver {
+  color:#f2f2f2;
+}
+
+/* //dataTables */
+/* //table */
+
+.table{
+  width: 100%;
+}
+
+.table thead tr th{
+  padding: 15px 10px 15px 10px;
+  font-size: 14px;
+  border: none;
+}
+
+.table tbody tr td{
+  padding: 10px 10px 10px 10px;
+  font-size: 14px;
+}
+
+
+div.dataTables_wrapper div.dataTables_length select{
+  height: 1.875rem;
+  margin-bottom: 2px!important;
+}
+
+
+.dataTables_wrapper .dataTables_processing {
+    background: rgba(37, 37, 37, 0.56);
+    border: 1px solid #ffb000;
+    /* top: 50%; */
+    margin-top: 25px!important;
+    color: #ffb000;
+    font-weight: bold;
+    border-radius: 10px 10px 10px 10px;
+  }
+
+
+/* modal */
+.modal .modal-dialog .modal-content .modal-header{
+  padding: 10px 10px;
+  background-color: #f1f1f1;
+}
+
+.modal-header .close{
+  margin : -18px -2px -25px auto;
+}
+
+.modal .modal-dialog .modal-content .modal-body{
+  padding: 20px 20px;
+}
+
+
+/* // */
+select.form-control, select.asColorPicker-input, .dataTables_wrapper select, .jsgrid .jsgrid-table .jsgrid-filter-row select, .select2-container--default select.select2-selection--single, .select2-container--default .select2-selection--single select.select2-search__field, select.typeahead, select.tt-query, select.tt-hint{
+  color:#495057;
+}
+
+
+/* table-detail */
+.table-detail tr th,td{
+  padding: 10px;
+  font-size: 13px;
+}
+
+.table-detail tr th,td{
+  color:#7d7c7c;
+}
+
+.select2-container .select2-selection--single{
+  height: 48px!important;
+}
+
+.select2-container--default .select2-selection--single{
+  border-radius: 1px!important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow{
+  top:10px!important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered{
+  line-height: 20px!important;
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered{
+  padding-left: 0px!important;
+}
+
+
+.table-responsive{
+  min-height: 200px;
+}
+
+.datepicker.datepicker-dropdown, .datepicker.datepicker-inline{
+  width: 20%;
+  z-index: 1115!important;
+}
+
+.datepicker table{
+  width: 100%;
+}
+
+.datepicker td, .datepicker th{
+  width: 50px!important;
+}
+
+.tanggal[readonly]{
+  background-color: #ffffff!important;
+}
+
+@media only screen and (max-width: 600px) {
+  /* table-detail */
+  .table-detail tr th,td{
+    padding: 5px 5px!important;
+    font-size: 11px!important;
+  }
+
+
+  .content-wrapper{
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .card-title{
+    font-size: 12px!important;
+  }
+
+  .card-title span{
+    font-size: 12px!important;
+  }
+
+  .card .card-body{
+    padding: 10px 10px;
+  }
+
+  .profile-dash{
+    width: 100%;
+    border-left: none!important;
+  }
+
+  .profile-dash h4{
+    font-size: 14px;
+  }
+
+  .pagination .page-item .page-link{
+    font-size: .575rem;
+  }
+  /* //data table */
+  .table thead tr th{
+    font-size: 12px;
+    padding: 7px;
+  }
+
+  .table thead tr td{
+    font-size: 11px;
+  }
+
+  .table thead tr td .badge{
+    font-size: 11px!important;
+  }
+
+  .table tbody tr td .data-person{
+    display: block;
+    line-height: 15px!important;
+  }
+  div.dataTables_wrapper div.dataTables_paginate ul.pagination{
+    justify-content: center!important;
+    /* width: 100%; */
+  }
+
+  .dataTables_wrapper .dataTables_processing {
+    background: none;
+    border: none;
+    /* top: 50%; */
+    padding-top: 39px!important;
+  }
+
+  .datepicker.datepicker-dropdown, .datepicker.datepicker-inline{
+    width: 40%;
+    z-index: 1115!important;
+  }
+
+  .btn-form-member{
+    width: 100%!important;
+    height: 50px;
+  }
+
+  tr td .data-person-mem{
+    padding-right: 4px;
+    display: block;
+    line-height: 20px;
+  }
+
+  /* .form-group .form-control{
+    border-top: none!important;
+    border-right: none!important;
+    border-left: none!important;
+    padding-left:2px !important;
+  }
+
+  .form-group label{
+    display: none;
+  } */
+}
