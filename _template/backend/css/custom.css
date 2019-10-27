@@ -1,0 +1,19 @@
+.horizontal-menu .top-navbar{
+  background: #192e46;
+}
+
+
+.horizontal-menu .bottom-navbar .page-navigation > .nav-item.active > .nav-link .menu-title, .horizontal-menu .bottom-navbar .page-navigation > .nav-item.active > .nav-link i, .horizontal-menu .bottom-navbar .page-navigation > .nav-item.active > .nav-link .menu-arrow{
+  color: #133a66;
+}
+
+
+.horizontal-menu .bottom-navbar .page-navigation > .nav-item > .nav-link .menu-icon{
+  color: #133a66;
+}
+
+
+.horizontal-menu .top-navbar .navbar-menu-wrapper .count-indicator .count{
+  background:#f5a623;
+  border: 1px solid #ffffff;
+}
