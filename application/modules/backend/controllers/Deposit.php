@@ -9,10 +9,12 @@ class Deposit extends MY_Controller{
     $this->load->model("Deposit_model","model");
   }
 
-  function get($status)
+  function get($status="")
   {
-    $this->template->set_title("Deposit");
-    $this->template->view("content/deposit/index_$status");
+    if ($status!="") {
+      $this->template->set_title("Deposit");
+      $this->template->view("content/deposit/index_$status");
+    }
   }
 
   function json($status="")

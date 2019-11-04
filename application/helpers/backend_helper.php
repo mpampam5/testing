@@ -95,3 +95,101 @@ if ( ! function_exists('replace_rupiah'))
     return str_replace(".","","$int");
   }
 }
+
+
+
+	function penyebut($nilai) {
+		$nilai = abs($nilai);
+		$huruf = array("", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan", "sepuluh", "sebelas");
+		$temp = "";
+		if ($nilai < 12) {
+			$temp = " ". $huruf[$nilai];
+		} else if ($nilai <20) {
+			$temp = penyebut($nilai - 10). " belas";
+		} else if ($nilai < 100) {
+			$temp = penyebut($nilai/10)." puluh". penyebut($nilai % 10);
+		} else if ($nilai < 200) {
+			$temp = " seratus" . penyebut($nilai - 100);
+		} else if ($nilai < 1000) {
+			$temp = penyebut($nilai/100) . " ratus" . penyebut($nilai % 100);
+		} else if ($nilai < 2000) {
+			$temp = " seribu" . penyebut($nilai - 1000);
+		} else if ($nilai < 1000000) {
+			$temp = penyebut($nilai/1000) . " ribu" . penyebut($nilai % 1000);
+		} else if ($nilai < 1000000000) {
+			$temp = penyebut($nilai/1000000) . " juta" . penyebut($nilai % 1000000);
+		} else if ($nilai < 1000000000000) {
+			$temp = penyebut($nilai/1000000000) . " milyar" . penyebut(fmod($nilai,1000000000));
+		} else if ($nilai < 1000000000000000) {
+			$temp = penyebut($nilai/1000000000000) . " trilyun" . penyebut(fmod($nilai,1000000000000));
+		}
+		return $temp;
+	}
+
+	function terbilang($nilai) {
+		if($nilai<0) {
+			$hasil = "minus ". trim(penyebut($nilai));
+		} else {
+			$hasil = trim(penyebut($nilai));
+		}
+		return ucwords($hasil);
+	}
+
+
+///cek omset
+function cek_child($id)
+{
+  $ci=& get_instance();
+  $qry = $ci->db->query("SELECT
+                          	tb_person.id_person,
+                          	tb_person.is_parent,
+                          	tb_person.kode_person,
+                          	tb_person.nama
+                          FROM
+                          	tb_person
+                          WHERE
+                          	tb_person.is_parent = $id");
+
+  $data = array();
+  foreach ($qry->result() as $row) {
+    $data[]= $row->id_person;
+  }
+
+  return $data;
+}
+
+
+function cek_is_child($id)
+{
+  $cek = cek_child($id);
+  $data = array();
+  foreach ($cek as $value) {
+    $data [] = cek_child($value);
+    array_push($data,$value);
+  }
+
+  $cek_is = iterator_to_array(new RecursiveIteratorIterator(new RecursiveArrayIterator($data)), 0);
+  return $cek_is;
+}
+
+
+function omset($id_child_array)
+{
+  $ci=& get_instance();
+  $id = count($id_child_array);
+  if ($id!=0) {
+    $qry = $ci->db->select("investment.id_invest,
+                            	investment.kode_invest,
+                            	investment.id_person,
+                            	SUM(investment.amount) AS amount,
+                            	investment.status")
+                      ->from("investment")
+                      ->where("status","ongoing")
+                      ->where_in("id_person",$id_child_array)
+                      ->get();
+      return $qry->row()->amount;
+  }else {
+    return 0;
+  }
+
+}

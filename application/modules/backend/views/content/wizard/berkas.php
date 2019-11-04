@@ -348,10 +348,3 @@ $(function () {
             });
             });
 </script>
-
-
-<?php
-  $filename = base_url()."_template/files/".enc_uri(profile("kode_person"))."/".$row->file_foto;
-  echo "$filename";
-
- ?>

@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="<?=base_url()?>_template/front/css/custom.css">
   <link rel="stylesheet" href="<?=base_url()?>_template/front/vendors/jquery-toast-plugin/jquery.toast.min.css">
   <link rel="stylesheet" href="<?=base_url()?>_template/front/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
   <!-- endinject -->
   <link rel="shortcut icon" href="<?=base_url()?>_template/front/images/favicon.png" />
   <!-- plugins:js -->
@@ -34,11 +34,11 @@
       <nav class="navbar top-navbar col-lg-12 col-12 p-0">
         <div class="container">
           <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-            <a class="navbar-brand brand-logo" href="index.html"><img src="<?=base_url()?>_template/front/images/logo-white.png" alt="logo"/></a>
-            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="<?=base_url()?>_template/front/images/logo-white.png" alt="logo"/></a>
+            <a class="navbar-brand brand-logo" href="<?=site_url("backend/dashboard")?>"><img src="<?=base_url()?>_template/front/images/logo-white.png" alt="logo"/></a>
+            <a class="navbar-brand brand-logo-mini" href="<?=site_url("backend/dashboard")?>"><img src="<?=base_url()?>_template/front/images/logo2.png" alt="logo"/></a>
           </div>
           <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
-            <ul class="navbar-nav navbar-nav-right">
+            <!-- <ul class="navbar-nav navbar-nav-right">
               <li class="nav-item dropdown">
                 <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
                   <i class="ti-bell mx-0"></i>
@@ -87,7 +87,7 @@
                   </a>
                 </div>
               </li>
-            </ul>
+            </ul> -->
             <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="horizontal-menu-toggle">
               <span class="ti-menu"></span>
             </button>
@@ -103,52 +103,42 @@
                 <span class="menu-title">Dashboard</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="pages/widgets/widgets.html">
-                <i class="ti-user menu-icon"></i>
-                <span class="menu-title">Account</span>
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="ti-list menu-icon"></i>
-                <span class="menu-title">Member</span>
-                <i class="menu-arrow"></i></a>
-              <div class="submenu">
-                <ul class="submenu-item">
-                  <li class="nav-item"><a class="nav-link" href="<?=site_url("backend/person/add")?>">Add Member</a></li>
-                  <li class="nav-item"><a class="nav-link" href="<?=site_url("backend/person")?>">All Member</a></li>
-                </ul>
-              </div>
-            </li>
 
 
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="ti-receipt menu-icon"></i>
-                <span class="menu-title">Invesment</span>
-                <i class="menu-arrow"></i></a>
-              <div class="submenu">
-                <ul class="submenu-item">
-                  <li class="nav-item"><a class="nav-link" href="<?=site_url("backend/investment/add")?>">Send To Investment</a></li>
-                  <li class="nav-item"><a class="nav-link" href="<?=site_url("backend/investment")?>">All Investment</a></li>
-                  <li class="nav-item"><a class="nav-link" href="pages/apps/calendar.html">Investment Profit</a></li>
-                </ul>
-              </div>
-            </li>
+            <?php if (profile("id_level") == 1 OR profile("id_level") == 2): ?>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="ti-list menu-icon"></i>
+                  <span class="menu-title">Member</span>
+                  <i class="menu-arrow"></i></a>
+                <div class="submenu">
+                  <ul class="submenu-item">
+                    <li class="nav-item"><a class="nav-link" href="<?=site_url("backend/person/add")?>">Add Member</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?=site_url("backend/person")?>">All Member</a></li>
+                  </ul>
+                </div>
+              </li>
+            <?php endif; ?>
 
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="ti-wallet menu-icon"></i>
-                <span class="menu-title">Comission</span>
-                <i class="menu-arrow"></i></a>
-              <div class="submenu">
-                <ul class="submenu-item">
-                  <li class="nav-item"><a class="nav-link" href="pages/apps/email.html">Royalty Sponsor</a></li>
-                  <li class="nav-item"><a class="nav-link" href="pages/apps/calendar.html">Bonus Sponsor</a></li>
-                </ul>
-              </div>
+
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="ti-receipt menu-icon"></i>
+                  <span class="menu-title">Invesment</span>
+                  <i class="menu-arrow"></i></a>
+                <div class="submenu">
+                  <ul class="submenu-item">
+                    <li class="nav-item"><a class="nav-link" href="<?=site_url("backend/investment/add")?>">Send To Investment</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?=site_url("backend/investment")?>">All Investment</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?=site_url("backend/investment/profit")?>">Profit Investment</a></li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="nav-item">
+              <a href="<?=site_url("backend/investment/dividen")?>" class="nav-link">
+                <i class="ti-stats-up menu-icon"></i>
+                <span class="menu-title">Comission</span></a>
             </li>
 
             <li class="nav-item">
@@ -166,17 +156,10 @@
             </li>
 
             <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="ti-share menu-icon"></i>
-                <span class="menu-title">Withdraw</span>
-                <i class="menu-arrow"></i></a>
-              <div class="submenu">
-                <ul class="submenu-item">
-                  <li class="nav-item"><a class="nav-link" href="pages/apps/email.html">Add Withdraw</a></li>
-                  <li class="nav-item"><a class="nav-link" href="pages/apps/calendar.html">Proccess</a></li>
-                  <li class="nav-item"><a class="nav-link" href="pages/apps/calendar.html">Approved</a></li>
-                </ul>
-              </div>
+              <a class="nav-link" href="<?=site_url("backend/account")?>">
+                <i class="ti-user menu-icon"></i>
+                <span class="menu-title">Account</span>
+              </a>
             </li>
 
             <li class="nav-item">

@@ -12,7 +12,7 @@ class MY_Controller extends CI_Controller{
           redirect(site_url("mem-panel"));
       }
       $this->load->helper(array("enc_gue","backend","tanggal_indonesia","balance"));
-      $this->load->library(array('template','form_validation'));
+      $this->load->library(array('template','form_validation','btree'));
     }
 
 

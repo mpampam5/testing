@@ -185,12 +185,16 @@
           <div class="col-sm-6">
             <div class="form-group">
               <label for="">Status Personal</label><span style="font-size:11px" class="text-primary pl-2">*</span>
+              <?php if (profile("id_level")==1): ?>
               <select class="form-control" id="status_level" name="status_level">
                 <option value="">-- pilih --</option>
-                <option data-op="1" value="2">CO FOUNDER</option>
-                <option data-op="2" value="3">AGENCY</option>
+                  <option data-op="1" value="2">CO FOUNDER</option>
+                <option data-op="2" value="">AGENCY</option>
                 <option data-op="3" value="4">MEMBER</option>
               </select>
+              <?php else: ?>
+                <input type="text" class="form-control" id="status_level" readonly name="status_level" value="MEMBER">
+            <?php endif; ?>
             </div>
           </div>
 

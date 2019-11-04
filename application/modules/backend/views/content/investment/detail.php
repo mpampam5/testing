@@ -90,7 +90,7 @@
   </div>
 
   <div class="col-md-7 mx-auto text-center">
-    <a class="btn btn-primary btn-sm text-white"><i class="ti-download"></i> Download SPK</a>
+    <a href="<?=site_url("backend/investment/get_spk/".enc_uri($row->id_invest))?>" target="_blank" class="btn btn-primary btn-sm text-white"><i class="ti-download"></i> Download SPK</a>
   </div>
 
 

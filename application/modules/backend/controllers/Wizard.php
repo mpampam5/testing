@@ -6,6 +6,9 @@ class Wizard extends MY_Controller{
   public function __construct()
   {
     parent::__construct();
+    if (profile("is_complate")=="1" AND profile("is_complate_berkas")=="1") {
+        redirect("backend/dashboard");
+    }
     $this->load->model("Wizard_model","model");
   }
 
@@ -15,6 +18,12 @@ class Wizard extends MY_Controller{
     $data["row"] = $this->model->get_where_person();
     $data['action'] = site_url("backend/wizard/personal");
     $this->template->view("content/wizard/index",$data);
+  }
+
+  function index_wizard()
+  {
+    $this->template->set_title("Lengkapi Data");
+    $this->template->view("content/wizard/index_wizard");
   }
 
 

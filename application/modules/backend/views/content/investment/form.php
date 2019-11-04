@@ -41,7 +41,7 @@
               <form id="form" action="<?=$action?>" autocomplete="off">
                 <div class="form-group">
                   <label id="amount">Amount (Rp)</label>
-                  <input type="text" class="form-control rupiah" name="amount" placeholder="Amount">
+                  <input type="text" class="form-control rupiah" name="amount" placeholder="Amount" value="<?=$value?>">
                 </div>
 
                 <div class="form-group">

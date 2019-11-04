@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="<?=base_url()?>_template/front/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+<script src="<?=base_url()?>_template/front/vendors/datatables.net/jquery.dataTables.js"></script>
+<script src="<?=base_url()?>_template/front/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
 
           <div class="row">
             <div class="col-md-12 grid-margin">
@@ -17,16 +20,12 @@
                       <h4 class="mb-0 font-weight-bold"><?=profile("username")?></h4>
                     </div>
                     <div class="border-left pl-2 mb-3 mb-xl-0 profile-dash">
-                      <p class="text-muted"><i class="ti-email"></i> Email</p>
-                      <h4 class="mb-0 font-weight-bold"><?=profile("email")?></h4>
-                    </div>
-                    <!-- <div class="border-left pl-2 mb-3 mb-xl-0 profile-dash">
-                      <p class="text-muted"><i class="ti-wallet"></i> Balance</p>
-                      <h4 class="mb-0 font-weight-bold">Rp.5.000.000</h4>
-                    </div> -->
-                    <div class="border-left pl-2 mb-3 mb-xl-0 profile-dash">
                       <p class="text-muted"><i class="ti-stats-up"></i> Status Level</p>
                       <h4 class="mb-0 font-weight-bold"><?=strtoupper(profile("level"))?></h4>
+                    </div>
+                    <div class="border-left pl-2 mb-3 mb-xl-0 profile-dash">
+                      <p class="text-muted"><i class="ti-calendar"></i> Waktu Server</p>
+                      <h4 class="mb-0 font-weight-bold text-success"><?=date_indo(date('Y-m-d')).'&nbsp;|&nbsp;'.date("H:i");?></h4>
                     </div>
                   </div>
                 </div>
@@ -45,58 +44,229 @@
                 </div>
               </div>
             </div>
+
+            <?php else: ?>
+              <?php if (setting_financial("invesment_status")=="on"): ?>
+              <div class="row  mb-4">
+                <div class="col-md-7 mx-auto">
+                  <div class="card ">
+                    <div class="card-body pb-0">
+                      <div class="form-group">
+                        <div class="input-group">
+                          <input type="text" class="form-control rupiah" id="value_invest" autocomplete="off" placeholder="Masukkan jumlah investasi anda">
+                          <div class="input-group-append">
+                            <button class="btn btn-sm btn-primary" id="invest" type="button">Invest</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <?php endif; ?>
           <?php endif; ?>
 
 
 
 
 
+
+
           <div class="row">
-            <div class="col-md-3 grid-margin stretch-card">
+            <div class="col-md-3 mb-2 stretch-card">
+                <div class="card" style="background-color:#00c0ef;">
+                  <a style="text-decoration:none;color:#fff" href="<?=site_url("backend/deposit/get/approved")?>">
+                  <div class="card-body">
+                    <p class="card-title text-md-center text-xl-left text-white">Deposit</p>
+                    <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
+                      <h5 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">Rp.<?=format_rupiah(balance())?></h5>
+                      <i class="ti-share-alt icon-md mb-0 mb-md-3 mb-xl-0 text-white"></i>
+                    </div>
+                  </div>
+                  </a>
+                </div>
+            </div>
+
+
+            <div class="col-md-3 mb-2 stretch-card">
+              <div class="card" style="background-color:#11a844;">
+                <a style="text-decoration:none;color:#fff" href="<?=site_url("backend/investment/dividen")?>">
+                <div class="card-body">
+                  <p class="card-title text-md-center text-xl-left text-white">Share Profit</p>
+                  <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
+                    <h5 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">Rp.<?=format_rupiah(earning())?></h5>
+                    <i class="ti-wallet icon-md text-white mb-0 mb-md-3 mb-xl-0"></i>
+                  </div>
+                </div>
+              </a>
+              </div>
+            </div>
+
+
+            <div class="col-md-3 mb-2 stretch-card">
+              <div class="card" style="background-color:#dd4b39 ;">
+                <a style="text-decoration:none;color:#fff" href="<?=site_url("backend/investment")?>">
+                <div class="card-body">
+                  <p class="card-title text-md-center text-xl-left text-white">Total Investment</p>
+                  <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
+                    <h5 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">Rp.<?=format_rupiah(total_investment())?></h5>
+                    <i class="ti-bookmark-alt icon-md text-white mb-0 mb-md-3 mb-xl-0"></i>
+                  </div>
+                </div>
+              </a>
+              </div>
+            </div>
+
+            <div class="col-md-3 mb-2 stretch-card">
+              <div class="card" style="background-color:#f39c12;">
+                <a href="<?=site_url("backend/investment/omset")?>" style="text-decoration:none;color:#fff">
+                <div class="card-body">
+                  <p class="card-title text-md-center text-xl-left text-white">Omset</p>
+                  <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
+                    <h5 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">
+                        Rp.<?=format_rupiah(omset($this->btree->get_all_id_children(sess('id_person'))))?>
+                    </h5>
+                    <i class="ti-layers-alt icon-md text-white mb-0 mb-md-3 mb-xl-0"></i>
+                  </div>
+                </div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-md-12 mx-auto">
               <div class="card">
                 <div class="card-body">
-                  <p class="card-title text-md-center text-xl-left">Balance</p>
-                  <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
-                    <h5 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">Rp.<?=format_rupiah(balance())?></h5>
-                    <i class="ti-wallet icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
+                  <h5 class="card-title">Deposit story</h5>
+                  <div class="table-responsive" style="min-height:100px!important">
+                    <table id="table-deposit" class="table table-bordered">
+                      <thead class="bg-danger text-white">
+                        <tr>
+                          <th>No.Reg</th>
+                          <th>Date Deposit</th>
+                          <th>Amount</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <?php
+                            $deposit = $this->db->where("id_person",sess("id_person"))
+                                                ->from("deposit")
+                                                ->limit(5)
+                                                ->order_by('id_deposit','desc')
+                                                ->get();
+                                                ?>
+                  <tbody>
+                      <?php foreach ($deposit->result() as $deposit): ?>
+                        <tr>
+                          <td><?=$deposit->kode_transaksi?></td>
+                          <td><?=date("d/m/y H:i",strtotime($deposit->created))?></td>
+                          <td>Rp.<?=format_rupiah($deposit->amount)?></td>
+                          <td>
+                            <?php if ($deposit->status=="approved"): ?>
+                              <span class="text-success">Approved</span>
+                            <?php elseif($deposit->status=="process"): ?>
+                              <span class="text-warning">Process</span>
+                            <?php elseif($deposit->status=="cancel"): ?>
+                              <span class="text-danger">Cancel</span>
+                            <?php endif; ?>
+                        </td>
+                        </tr>
+                      <?php endforeach; ?>
+
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-md-3 grid-margin stretch-card">
+
+
+
+
+            <div class="col-md-12 mx-auto">
               <div class="card">
                 <div class="card-body">
-                  <p class="card-title text-md-center text-xl-left">Number of Clients</p>
-                  <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
-                    <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">47033</h3>
-                    <i class="ti-user icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
+                  <h5 class="card-title">Comission</h5>
+                  <div class="table-responsive" style="min-height:100px!important">
+                    <table id="table-comission" class="table table-bordered">
+                      <thead class="bg-primary text-white">
+                        <tr>
+                          <th>Date</th>
+                          <th>Keterangan</th>
+                        </tr>
+                      </thead>
+                      <?php $dividen_dash = $this->db->select("investment_dividen.id_invest_dividen,
+                                                              investment_dividen.id_invest,
+                                                              investment_dividen.id_person,
+                                                              investment_dividen.no_dividen,
+                                                              DATE_FORMAT(investment_dividen.time_dividen,'%d-%m-%Y') AS time_dividen,
+                                                              investment_dividen.persentase,
+                                                              FORMAT(investment_dividen.amount,0) AS amount_dividen,
+                                                              investment.kode_invest,
+                                                              FORMAT(investment.amount,0) AS amount_invest")
+                                                    ->from("investment_dividen")
+                                                    ->join("investment","investment.id_invest = investment_dividen.id_invest")
+                                                    ->where("investment_dividen.id_person",sess("id_person"))
+                                                    ->limit(5)
+                                                    ->get() ?>
+                      <tbody>
+                        <?php foreach ($dividen_dash->result() as $didash): ?>
+                          <tr>
+                            <td><?=$didash->time_dividen?></td>
+                            <td>Pembagian bonus profit ke-<?=$didash->no_dividen?> sebesar <span class="text-success">Rp.<?=$didash->amount_dividen?> (<?=$didash->persentase?>%)</span> dari investasi sebesar <span class="text-success">Rp.<?=$didash->amount_invest?></span> dengan kode invest <span class="text-info"><?=$didash->kode_invest?></span></td>
+                          </tr>
+                        <?php endforeach; ?>
+                      </tbody>
+                    </table>
                   </div>
-                  <p class="mb-0 mt-2 text-danger">0.22% <span class="text-black ml-1"><small>(30 days)</small></span></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <p class="card-title text-md-center text-xl-left">Today’s Bookings</p>
-                  <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
-                    <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">40016</h3>
-                    <i class="ti-agenda icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
-                  </div>
-                  <p class="mb-0 mt-2 text-success">10.00%<span class="text-black ml-1"><small>(30 days)</small></span></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <p class="card-title text-md-center text-xl-left">Total Items Bookings</p>
-                  <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
-                    <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">61344</h3>
-                    <i class="ti-layers-alt icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
-                  </div>
-                  <p class="mb-0 mt-2 text-success">22.00%<span class="text-black ml-1"><small>(30 days)</small></span></p>
                 </div>
               </div>
             </div>
           </div>
+
+
+
+<script type="text/javascript">
+<?php if (setting_financial("invesment_status")=="on"): ?>
+$(document).ready(function(){
+  $('.rupiah').mask('00.000.000.000', {reverse: true});
+});
+
+$(document).on("click","#invest",function(e)
+{
+  e.preventDefault();
+    var value = $("#value_invest").val();
+    num = value.replace(/\./g,'');
+    window.location.href = "<?=base_url()?>backend/investment/add/"+num+".html";
+});
+<?php endif; ?>
+
+
+$('#table-deposit').DataTable({
+  "lengthChange": false,
+  "searching": false,
+  "info": false,
+  "ordering":false,
+  "paging":false,
+  "columnDefs": [
+    {
+        "className": "text-center",
+        "targets": 3
+    },
+  ],
+});
+
+
+$('#table-comission').DataTable({
+  "lengthChange": false,
+  "searching": false,
+  "info": false,
+  "ordering":false,
+  "paging":false
+});
+
+
+
+
+</script>

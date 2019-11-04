@@ -66,5 +66,4 @@
 </body>
 
 
-<!-- Mirrored from www.urbanui.com/justdo/template/demo/horizontal-default-light/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 14 Jul 2019 05:53:53 GMT -->
 </html>

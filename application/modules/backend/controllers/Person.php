@@ -6,6 +6,9 @@ class Person extends MY_Controller{
   public function __construct()
   {
     parent::__construct();
+    if (profile("is_complate")=="0" OR profile("is_complate_berkas")=="0") {
+        redirect("backend/wizard/index_wizard");
+    }
     $this->load->model("Person_model","model");
   }
 

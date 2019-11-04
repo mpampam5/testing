@@ -34,7 +34,6 @@
               </thead>
 
               <tbody>
-                <?php if ($row->num_rows() > 0): ?>
                   <?php foreach ($row->result() as $row): ?>
                     <tr>
                       <td class="text-primary"><?=$row->kode_invest?></td>
@@ -48,15 +47,11 @@
                         <?php endif; ?>
                       </td>
                       <td>
-                        <a href="<?=site_url("backend/investment/detail/".enc_uri($row->id_invest))?>" class="badge badge-success" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Detail"><i class="ti-zoom-in"></i></a>
+                        <a href="<?=site_url("backend/investment/detail/".enc_uri($row->id_invest))?>" class="badge badge-primary" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Detail"><i class="ti-zoom-in"></i></a>
                       </td>
                     </tr>
                   <?php endforeach; ?>
-                  <?php else: ?>
-                    <tr>
-                      <td colspan="4" class="text-center">Anda belum melakukan investasi</td>
-                    </tr>
-                <?php endif; ?>
+
 
 
               </tbody>
