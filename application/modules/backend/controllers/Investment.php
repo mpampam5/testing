@@ -75,8 +75,10 @@ class Investment extends MY_Controller{
 
               if ($tgl >= "01" AND $tgl <= "05") {
                 $kontrak_start = date("Y-m")."-01";
+                $group = 1;
               }elseif ($tgl >= "15" AND $tgl <= "20") {
                 $kontrak_start = date("Y-m")."-15";
+                $group = 15;
               }else {
                 $kontrak_start = 000;
               }
@@ -91,6 +93,7 @@ class Investment extends MY_Controller{
                            "kode_invest"    => $kode,
                            "id_person"      => sess('id_person'),
                            "amount"         => $amount,
+                           "group"         => $group,
                            "kontrak_start"  => $kontrak_start,
                            "kontrak_end"    => $kontrak_end,
                            "created"        => date("Y-m-d H:i:s")

@@ -49,9 +49,14 @@ class Investment_model extends MY_Model{
                               investment_dividen.persentase,
                               FORMAT(investment_dividen.amount,0) AS amount_dividen,
                               investment.kode_invest,
-                              FORMAT(investment.amount,0) AS amount_invest");
+                              FORMAT(investment.amount,0) AS amount_invest,
+                              tb_person.kode_person,
+                              tb_person.nama,
+                              auth_person.username");
     $this->datatables->from("investment_dividen");
     $this->datatables->join("investment","investment.id_invest = investment_dividen.id_invest");
+    $this->datatables->join("tb_person","tb_person.id_person = investment_dividen.id_person");
+    $this->datatables->join("auth_person","auth_person.id_person = investment.id_person");
     $this->datatables->where("investment_dividen.id_person",sess("id_person"));
     return $this->datatables->generate();
   }

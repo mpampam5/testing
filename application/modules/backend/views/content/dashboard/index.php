@@ -24,8 +24,8 @@
                       <h4 class="mb-0 font-weight-bold"><?=strtoupper(profile("level"))?></h4>
                     </div>
                     <div class="border-left pl-2 mb-3 mb-xl-0 profile-dash">
-                      <p class="text-muted"><i class="ti-calendar"></i> Waktu Server</p>
-                      <h4 class="mb-0 font-weight-bold text-success"><?=date_indo(date('Y-m-d')).'&nbsp;|&nbsp;'.date("H:i");?></h4>
+                      <p class="text-muted"><i class="ti-wallet"></i> Deposit</p>
+                      <h4 class="mb-0 font-weight-bold text-success">Rp.<?=format_rupiah(balance())?></h4>
                     </div>
                   </div>
                 </div>
@@ -75,11 +75,11 @@
           <div class="row">
             <div class="col-md-3 mb-2 stretch-card">
                 <div class="card" style="background-color:#00c0ef;">
-                  <a style="text-decoration:none;color:#fff" href="<?=site_url("backend/deposit/get/approved")?>">
+                  <a style="text-decoration:none;color:#fff" href="<?=site_url("backend/investment/dividen")?>">
                   <div class="card-body">
-                    <p class="card-title text-md-center text-xl-left text-white">Deposit</p>
+                    <p class="card-title text-md-center text-xl-left text-white">Comission</p>
                     <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
-                      <h5 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">Rp.<?=format_rupiah(balance())?></h5>
+                      <h5 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">Rp.<?=format_rupiah(total_investment_dividen())?></h5>
                       <i class="ti-share-alt icon-md mb-0 mb-md-3 mb-xl-0 text-white"></i>
                     </div>
                   </div>
@@ -90,7 +90,7 @@
 
             <div class="col-md-3 mb-2 stretch-card">
               <div class="card" style="background-color:#11a844;">
-                <a style="text-decoration:none;color:#fff" href="<?=site_url("backend/investment/dividen")?>">
+                <a style="text-decoration:none;color:#fff" href="<?=site_url("backend/investment/profit")?>">
                 <div class="card-body">
                   <p class="card-title text-md-center text-xl-left text-white">Share Profit</p>
                   <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
@@ -138,41 +138,47 @@
             <div class="col-md-12 mx-auto">
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title">Deposit story</h5>
+                  <h5 class="card-title">Investment History</h5>
                   <div class="table-responsive" style="min-height:100px!important">
-                    <table id="table-deposit" class="table table-bordered">
+                    <table id="table-invest" class="table table-bordered">
                       <thead class="bg-danger text-white">
                         <tr>
-                          <th>No.Reg</th>
-                          <th>Date Deposit</th>
+                          <th>KD.INVESTMENT</th>
+                          <th>Date Invest</th>
                           <th>Amount</th>
                           <th>Status</th>
                         </tr>
                       </thead>
                       <?php
-                            $deposit = $this->db->where("id_person",sess("id_person"))
-                                                ->from("deposit")
-                                                ->limit(5)
-                                                ->order_by('id_deposit','desc')
-                                                ->get();
-                                                ?>
-                  <tbody>
-                      <?php foreach ($deposit->result() as $deposit): ?>
-                        <tr>
-                          <td><?=$deposit->kode_transaksi?></td>
-                          <td><?=date("d/m/y H:i",strtotime($deposit->created))?></td>
-                          <td>Rp.<?=format_rupiah($deposit->amount)?></td>
-                          <td>
-                            <?php if ($deposit->status=="approved"): ?>
-                              <span class="text-success">Approved</span>
-                            <?php elseif($deposit->status=="process"): ?>
-                              <span class="text-warning">Process</span>
-                            <?php elseif($deposit->status=="cancel"): ?>
-                              <span class="text-danger">Cancel</span>
-                            <?php endif; ?>
-                        </td>
-                        </tr>
-                      <?php endforeach; ?>
+                      $invest = $this->db->select("investment.id_invest,
+                                              	investment.kode_invest,
+                                              	investment.id_person,
+                                              	investment.amount,
+                                              	investment.status,
+                                              	investment.created ")
+                                     ->from("investment")
+                                     ->where("investment.id_person",sess("id_person"))
+                                     ->order_by("id_invest","desc")
+                                     ->limit(5)
+                                     ->get();
+                       ?>
+                      <tbody>
+                          <?php foreach ($invest->result() as $invest): ?>
+                            <tr>
+                              <td class="text-primary"><?=$invest->kode_invest?></td>
+                              <td><?=date("d-m-Y",strtotime($invest->created))?></td>
+                              <td>Rp.<?=format_rupiah($invest->amount)?></td>
+                              <td>
+                                <?php if ($invest->status=="ongoing"): ?>
+                                  <span class="badge badge-success">ongoing</span>
+                                  <?php else: ?>
+                                  <span class="badge badge-danger">done</span>
+                                <?php endif; ?>
+                              </td>
+                            </tr>
+                          <?php endforeach; ?>
+
+
 
                       </tbody>
                     </table>
@@ -183,17 +189,18 @@
 
 
 
-
-            <div class="col-md-12 mx-auto">
+            <div class="col-md-12 mx-auto mt-2">
               <div class="card">
                 <div class="card-body">
                   <h5 class="card-title">Comission</h5>
                   <div class="table-responsive" style="min-height:100px!important">
+                    <h6>Total Comission <span class="text-primary">Rp.<?=format_rupiah(total_investment_dividen())?></span></h6>
                     <table id="table-comission" class="table table-bordered">
                       <thead class="bg-primary text-white">
                         <tr>
                           <th>Date</th>
-                          <th>Keterangan</th>
+                          <th>Data Invest</th>
+                          <th>Comission</th>
                         </tr>
                       </thead>
                       <?php $dividen_dash = $this->db->select("investment_dividen.id_invest_dividen,
@@ -203,18 +210,24 @@
                                                               DATE_FORMAT(investment_dividen.time_dividen,'%d-%m-%Y') AS time_dividen,
                                                               investment_dividen.persentase,
                                                               FORMAT(investment_dividen.amount,0) AS amount_dividen,
+                                                              investment.id_person,
                                                               investment.kode_invest,
-                                                              FORMAT(investment.amount,0) AS amount_invest")
+                                                              FORMAT(investment.amount,0) AS amount_invest,
+                                                              tb_person.nama,
+                                                              auth_person.username")
                                                     ->from("investment_dividen")
                                                     ->join("investment","investment.id_invest = investment_dividen.id_invest")
                                                     ->where("investment_dividen.id_person",sess("id_person"))
+                                                    ->join("tb_person","tb_person.id_person = investment.id_person")
+                                                    ->join("auth_person","auth_person.id_person = investment.id_person")
                                                     ->limit(5)
                                                     ->get() ?>
                       <tbody>
                         <?php foreach ($dividen_dash->result() as $didash): ?>
                           <tr>
                             <td><?=$didash->time_dividen?></td>
-                            <td>Pembagian bonus profit ke-<?=$didash->no_dividen?> sebesar <span class="text-success">Rp.<?=$didash->amount_dividen?> (<?=$didash->persentase?>%)</span> dari investasi sebesar <span class="text-success">Rp.<?=$didash->amount_invest?></span> dengan kode invest <span class="text-info"><?=$didash->kode_invest?></span></td>
+                            <td><span class="text-info"><?=$didash->kode_invest?></span> <i class="ti-angle-double-right"></i> <span class="text-success">Rp.<?=$didash->amount_invest?></span> <i class="ti-angle-double-right"></i> profit ke-<?=$didash->no_dividen?> <i class="ti-angle-double-right"></i> <span class="text-primary"> <?=$didash->username?></span> <i class="ti-angle-double-right"></i> <span class="text-primary"><?=$didash->nama?></span></td>
+                            <td><span class="text-success">Rp.<?=$didash->amount_dividen?> (<?=$didash->persentase?>%)</span></td>
                           </tr>
                         <?php endforeach; ?>
                       </tbody>
@@ -243,7 +256,7 @@ $(document).on("click","#invest",function(e)
 <?php endif; ?>
 
 
-$('#table-deposit').DataTable({
+$('#table-invest').DataTable({
   "lengthChange": false,
   "searching": false,
   "info": false,

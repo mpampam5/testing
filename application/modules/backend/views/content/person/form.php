@@ -193,7 +193,8 @@
                 <option data-op="3" value="4">MEMBER</option>
               </select>
               <?php else: ?>
-                <input type="text" class="form-control" id="status_level" readonly name="status_level" value="MEMBER">
+                <input type="hidden" class="form-control" id="status_level" readonly name="status_level" value="4">
+                <input type="text" class="form-control"  readonly  value="MEMBER">
             <?php endif; ?>
             </div>
           </div>

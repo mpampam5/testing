@@ -13,7 +13,7 @@
     <nav aria-label="breadcrumb mb-1">
       <ol class="breadcrumb bg-black">
         <li class="breadcrumb-item" aria-current="page">Investment</li>
-        <li class="breadcrumb-item active" aria-current="page">Investment Profit</li>
+        <li class="breadcrumb-item active" aria-current="page">Share Profit</li>
       </ol>
     </nav>
   </div>
@@ -21,6 +21,7 @@
     <div class="col-md-12 mx-auto">
       <div class="card">
         <div class="card-body">
+          <h5>Total Profit <span class="text-primary">Rp.<?=format_rupiah(earning())?></span></h5>
           <div class="table-responsive">
             <table id="table" class="table table-bordered">
               <thead class=" bg-black text-silver">

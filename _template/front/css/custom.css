@@ -275,4 +275,8 @@ select.form-control, select.asColorPicker-input, .dataTables_wrapper select, .js
   .form-group label{
     display: none;
   } */
+
+  .horizontal-menu .top-navbar .navbar-brand-wrapper .navbar-brand img{
+    height: 50px;
+  }
 }

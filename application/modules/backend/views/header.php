@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-<!-- Mirrored from www.urbanui.com/justdo/template/demo/horizontal-default-light/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 14 Jul 2019 05:53:22 GMT -->
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -35,7 +33,7 @@
         <div class="container">
           <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
             <a class="navbar-brand brand-logo" href="<?=site_url("backend/dashboard")?>"><img src="<?=base_url()?>_template/front/images/logo-white.png" alt="logo"/></a>
-            <a class="navbar-brand brand-logo-mini" href="<?=site_url("backend/dashboard")?>"><img src="<?=base_url()?>_template/front/images/logo2.png" alt="logo"/></a>
+            <a class="navbar-brand brand-logo-mini" href="<?=site_url("backend/dashboard")?>"><img src="<?=base_url()?>_template/front/images/cheeta.png" alt="logo"/></a>
           </div>
           <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
             <!-- <ul class="navbar-nav navbar-nav-right">
@@ -128,9 +126,8 @@
                   <i class="menu-arrow"></i></a>
                 <div class="submenu">
                   <ul class="submenu-item">
-                    <li class="nav-item"><a class="nav-link" href="<?=site_url("backend/investment/add")?>">Send To Investment</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?=site_url("backend/investment")?>">All Investment</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?=site_url("backend/investment/profit")?>">Profit Investment</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?=site_url("backend/investment/profit")?>">Share Profit</a></li>
                   </ul>
                 </div>
               </li>
