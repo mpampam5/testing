@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-require_once("./application/third_party/dompdf/autoload.inc.php");
+require_once(APPPATH."/third_party/dompdf/autoload.inc.php");
 use Dompdf\Dompdf;
 class Pdfgenerator {
   public function generate($html, $filename='', $stream=TRUE, $paper = 'A4', $orientation = "portrait")

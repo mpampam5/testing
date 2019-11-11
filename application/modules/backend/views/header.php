@@ -103,7 +103,7 @@
             </li>
 
 
-            <?php if (profile("id_level") == 1 OR profile("id_level") == 2): ?>
+            <?php if (profile("id_level") == 1 OR profile("id_level") == 2 OR profile("id_level") == 3): ?>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="ti-list menu-icon"></i>

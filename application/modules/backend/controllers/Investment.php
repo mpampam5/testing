@@ -64,7 +64,7 @@ class Investment extends MY_Controller{
     {
       if ($this->input->is_ajax_request()) {
           if (setting_financial("invesment_status")=="on") {
-            $json = array('success'=>false, 'alert'=>array(), 'url'=>array());
+            $json = array('success'=>false, 'alert'=>array(), 'url'=>array(),'header_alert'=>array());
             $this->form_validation->set_rules("amount","&nbsp;*","trim|xss_clean|required|callback__cek_investment");
             $this->form_validation->set_rules("password","*&nbsp;","trim|xss_clean|required|callback__cek_password");
             $this->form_validation->set_error_delimiters('<span class="error ml-1 text-danger" style="font-size:11px">','</span>');
@@ -73,7 +73,7 @@ class Investment extends MY_Controller{
               $masa_kontrak = setting_financial("invesment_kontrak");
               $tgl = date("d");
 
-              if ($tgl >= "01" AND $tgl <= "05") {
+              if ($tgl >= "01" AND $tgl <= "14") {
                 $kontrak_start = date("Y-m")."-01";
                 $group = 1;
               }elseif ($tgl >= "15" AND $tgl <= "20") {
@@ -124,7 +124,7 @@ class Investment extends MY_Controller{
                $config['errorlog']     = './_template/files/'.enc_uri(profile("kode_person"))."/"; //string, the default is application/logs/
                $config['imagedir']     = './_template/files/'.enc_uri(profile("kode_person"))."/"; //direktori penyimpanan qr code
                $config['quality']      = true; //boolean, the default is true
-               $config['size']         = '524'; //interger, the default is 1024
+               $config['size']         = '224'; //interger, the default is 1024
                $config['black']        = array(224,255,255); // array, default is array(255,255,255)
                $config['white']        = array(70,130,180); // array, default is array(0,0,0)
                $this->ciqrcode->initialize($config);
@@ -137,8 +137,11 @@ class Investment extends MY_Controller{
                $params['savename'] = FCPATH.$config['imagedir'].$image_name; //simpan image QR CODE ke folder assets/images/
                $this->ciqrcode->generate($params); // fungsi untuk generate QR CODE
 
+
+               $json['header_alert'] = "success";
                $json['alert'] = "Send To Investment successfully";
              }else {
+               $json['header_alert'] = "error";
                $json['alert'] = "Invest sudah tertutup, silahkan kembali tgl 1 s/d 5 dan 15 s/d 20";
              }
 
@@ -205,7 +208,7 @@ class Investment extends MY_Controller{
     {
       if ($id!="") {
         if ($row = $this->model->get_detail_invest($id)) {
-          $this->load->library('pdfgenerator');
+          $this->load->library('Pdfgenerator');
           $data["row"] = $row;
           $html = $this->load->view('content/investment/spk',$data,true);
           $filename = 'report_'.time();

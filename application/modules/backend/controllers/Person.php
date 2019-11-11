@@ -83,33 +83,35 @@ class Person extends MY_Controller{
 
   function add()
     {
-      $this->template->set_title("Person");
-      $data = [
-                "action"          => site_url("backend/person/add_action"),
-                "button"          => "add",
-                "nik"             => set_value("nik"),
-                "nama"            => set_value("nama"),
-                "email"           => set_value("email"),
-                "telepon"         => set_value("telepon"),
-                "tempat_lahir"    => set_value("tempat_lahir"),
-                "tanggal_lahir"   => set_value("tanggal_lahir"),
-                "telepon1"        => set_value("telepon1"),
-                "telepon2"        => set_value("telepon2"),
-                "pekerjaan"        => set_value("pekerjaan"),
-                "alamat"          => set_value("alamat"),
-                "waris_nama"      => set_value("waris_nama"),
-                "waris_telepon"   => set_value("waris_telepon"),
-                "waris_alamat"    => set_value("waris_alamat"),
-                "waris_hubungan"  => set_value("waris_hubungan"),
-                "username"  => set_value("username"),
-                "no_rekening"  => set_value("no_rekening"),
-                "nama_rekening"  => set_value("nama_rekening"),
-                "bank"  => set_value("bank"),
-                "status"  => set_value("status"),
-                "level"  => set_value("level"),
-                "is_parent"  => set_value("is_parent")
-              ];
-      $this->template->view("content/person/form",$data);
+      if (profile("id_level")!=4) {
+        $this->template->set_title("Person");
+        $data = [
+                  "action"          => site_url("backend/person/add_action"),
+                  "button"          => "add",
+                  "nik"             => set_value("nik"),
+                  "nama"            => set_value("nama"),
+                  "email"           => set_value("email"),
+                  "telepon"         => set_value("telepon"),
+                  "tempat_lahir"    => set_value("tempat_lahir"),
+                  "tanggal_lahir"   => set_value("tanggal_lahir"),
+                  "telepon1"        => set_value("telepon1"),
+                  "telepon2"        => set_value("telepon2"),
+                  "pekerjaan"        => set_value("pekerjaan"),
+                  "alamat"          => set_value("alamat"),
+                  "waris_nama"      => set_value("waris_nama"),
+                  "waris_telepon"   => set_value("waris_telepon"),
+                  "waris_alamat"    => set_value("waris_alamat"),
+                  "waris_hubungan"  => set_value("waris_hubungan"),
+                  "username"  => set_value("username"),
+                  "no_rekening"  => set_value("no_rekening"),
+                  "nama_rekening"  => set_value("nama_rekening"),
+                  "bank"  => set_value("bank"),
+                  "status"  => set_value("status"),
+                  "level"  => set_value("level"),
+                  "is_parent"  => set_value("is_parent")
+                ];
+        $this->template->view("content/person/form",$data);
+      }
     }
 
 
@@ -117,31 +119,28 @@ class Person extends MY_Controller{
         {
           if ($this->input->is_ajax_request()) {
               $json = array('success'=>false, 'alert'=>array(), 'url'=>array());
-              $this->form_validation->set_rules("nik","&nbsp;*","trim|xss_clean|min_length[16]|required|numeric|callback__cek_nik");
+              $this->form_validation->set_rules("nik","&nbsp;*","trim|xss_clean|min_length[16]|max_length[16]|required|numeric|callback__cek_nik");
               $this->form_validation->set_rules("email","*&nbsp;","trim|xss_clean|required|valid_email|callback__cek_email");
               $this->form_validation->set_rules("username","*&nbsp;","trim|xss_clean|htmlspecialchars|required|alpha_numeric|min_length[5]|is_unique[auth_person.username]",[
                 "is_unique" => "* sudah digunakan"]);
               $this->_rules();
               if ($this->form_validation->run()) {
                 $level = $this->input->post("status_level",true);
-                if ($level==1) {
-                  $kd = "FON";
-                  $url =  "founder";
-                }elseif ($level==2) {
+                if (profile("id_level")==1) {
                   $kd = "COF";
-                  $url =  "co_founders";
-                }elseif ($level==3) {
+                  $lev =  2;
+                }elseif (profile("id_level")==2) {
                   $kd = "AGN";
-                  $url =  "agency";
-                }elseif ($level==4) {
+                  $lev =  3;
+                }elseif (profile("id_level")==3) {
                   $kd = "MEM";
-                  $url =  "member";
+                  $lev =  4;
                 }
 
                 $data = [
                           "kode_person"   => $this->_kd_reg($kd),
                           "is_parent"     => sess("id_person"),
-                          "id_level"     => $level,
+                          "id_level"     => $lev,
                           "nik"          => $this->input->post("nik",true),
                           "nama"          => $this->input->post("nama",true),
                           "telepon1"      => $this->input->post("telepon1",true),

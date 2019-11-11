@@ -89,7 +89,7 @@ $.ajax({
             $.toast({
               text: json.alert,
               showHideTransition: 'slide',
-              icon: 'success',
+              icon: json.header_alert,
               loaderBg: '#f96868',
               position: 'bottom-right',
               afterHidden: function () {

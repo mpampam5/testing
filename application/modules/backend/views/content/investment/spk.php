@@ -32,7 +32,7 @@
             header .logo{
               position: fixed;
               top: 20px;
-              left: 4cm;
+              left: 1.5cm;
               width: 65px;
               height: 75px;
             }
@@ -48,7 +48,7 @@
             header h2{
               position: fixed;
               top: 20px;
-              left: 7cm;
+              left: 4cm;
               font-family: Arial, Helvetica, sans-serif;
             }
 
@@ -127,7 +127,7 @@
             </tr>
             <tr>
               <td style="width:120px">I. Nama Perusahaan</td>
-              <td style="width:10px">:</td>
+              <td style="width:1px">:</td>
               <td><b style="font-size:12px;"><?=strtoupper(setting_system('title'))?></b></td>
             </tr>
 
@@ -274,7 +274,6 @@
       <div class="ttd" style="position:absolute;bottom:40px;font-size:12px;">
         <span>Tempat : Makassar, <?=date_indo($row->kontrak_start)?></span><br>
         <span>Pihak Pertama (1)</span><br>
-        <span>Pengelola</span><br>
         <span><?=strtoupper(setting_system("title"))?></span>
         <br><br><br><br><br><br><br>
         <span>Andi Awaluddin Buchri</span>
@@ -284,8 +283,7 @@
       <div class="ttd2" style="position:absolute;right:0;bottom:40px;font-size:12px;">
         <span>&nbsp;</span><br>
         <span>Pihak Kedua (2)</span><br>
-        <span>Mitra</span><br>
-        <span><?=strtoupper(setting_system("title"))?></span>
+        <span>Mitra</span>
         <br><br><br><br><br><br><br>
         <span><?=$row->nama?></span>
       </div>

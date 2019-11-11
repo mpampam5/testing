@@ -186,15 +186,14 @@
             <div class="form-group">
               <label for="">Status Personal</label><span style="font-size:11px" class="text-primary pl-2">*</span>
               <?php if (profile("id_level")==1): ?>
-              <select class="form-control" id="status_level" name="status_level">
-                <option value="">-- pilih --</option>
-                  <option data-op="1" value="2">CO FOUNDER</option>
-                <option data-op="2" value="">AGENCY</option>
-                <option data-op="3" value="4">MEMBER</option>
-              </select>
-              <?php else: ?>
-                <input type="hidden" class="form-control" id="status_level" readonly name="status_level" value="4">
-                <input type="text" class="form-control"  readonly  value="MEMBER">
+                <input type="hidden" class="form-control" id="status_level" readonly name="status_level" value="2">
+                <input type="text" class="form-control"  readonly  value="CO FOUNDER">
+            <?php elseif(profile("id_level")==2): ?>
+              <input type="hidden" class="form-control" id="status_level" readonly name="status_level" value="3">
+              <input type="text" class="form-control"  readonly  value="AGENCY">
+            <?php elseif(profile("id_level")==3): ?>
+              <input type="hidden" class="form-control" id="status_level" readonly name="status_level" value="4">
+              <input type="text" class="form-control"  readonly  value="MEMBER">
             <?php endif; ?>
             </div>
           </div>
