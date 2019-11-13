@@ -108,12 +108,14 @@
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="ti-list menu-icon"></i>
-                  <span class="menu-title">Member</span>
+                  <span class="menu-title">Membership</span>
                   <i class="menu-arrow"></i></a>
                 <div class="submenu">
                   <ul class="submenu-item">
-                    <li class="nav-item"><a class="nav-link" href="<?=site_url("backend/person/add")?>">Add Member</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?=site_url("backend/person")?>">All Member</a></li>
+                    <?php if (profile("id_level")==3): ?>
+                      <li class="nav-item"><a class="nav-link" href="<?=site_url("backend/person/add")?>">Add Membership</a></li>
+                    <?php endif; ?>
+                    <li class="nav-item"><a class="nav-link" href="<?=site_url("backend/person")?>">All Membership</a></li>
                   </ul>
                 </div>
               </li>
@@ -129,6 +131,7 @@
                   <ul class="submenu-item">
                     <li class="nav-item"><a class="nav-link" href="<?=site_url("backend/investment")?>">All Investment</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?=site_url("backend/investment/profit")?>">Share Profit</a></li>
+                      <li class="nav-item"><a class="nav-link" href="<?=site_url("backend/investment/omset")?>">Akumulasi Omset</a></li>
                   </ul>
                 </div>
               </li>

@@ -217,7 +217,7 @@
 
       <footer>
         <span>OFFICE : <?=setting_system('alamat')?></span><br>
-        <span>CUSTOMER SERVICE : <?=strtoupper(setting_system('telepon1'))?> <?=(setting_system('telepon2')!="")?"/ ".setting_system('telepon2'):""?> (Pelayanan CS Senin – Jum’at, Pukul 09.00-20.00 WITA).</span>
+        <span>CUSTOMER SERVICE : <?=strtoupper(setting_system('telepon1'))?> <?=(setting_system('telepon2')!="")?"/ ".setting_system('telepon2'):""?> / <?=setting_system('email')?> (Pelayanan CS Senin – Jum’at, Pukul 09.00-20.00 WITA).</span>
            <div class="num_page">
              Page <span class="pagenum"></span>
            </div>

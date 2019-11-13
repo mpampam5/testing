@@ -23,6 +23,7 @@
       <div class="col-md-12 mx-auto">
         <div class="card">
           <div class="card-body">
+            <h5>Total Omset <span class="text-primary">Rp.<?=format_rupiah(omset($this->btree->get_all_id_children(sess('id_person'))))?></span></h5>
             <div class="table-responsive">
               <table id="table" class="table table-bordered">
                 <thead class=" bg-black text-silver">

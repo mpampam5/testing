@@ -49,7 +49,23 @@
                   <input type="password" class="form-control" name="password" placeholder="Masukkan Password Akun Anda">
                 </div>
 
-                <button type="submit" id="submit" name="submit" class="btn btn-primary btn-md btn-block btn-icon-text"><i class="ti-files btn-icon-prepend"></i> Send To Investment</button>
+
+                <div class="form-group">
+                  <label id="password">Syarat dan aturan</label>
+                  <div style="max-height:300px;overflow:auto;padding:10px;border:1px solid #9a9a9a; background:#ececec">
+                    <?php $this->load->view("content/investment/pasal") ?>
+                    <div class="mt-5">
+                      <div class="form-check form-check-flat form-check-primary">
+                      <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" onclick="terms_changed(this)">
+                        “Saya telah membaca, mengerti dan setuju terhadap semua ketentuan yang tercantum dalam perjanjian ini “.
+                      <i class="input-helper"></i></label>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+
+                <button type="submit" id="submit" name="submit" disabled class="btn btn-primary btn-md btn-block btn-icon-text"><i class="ti-files btn-icon-prepend"></i> Send To Investment</button>
               </form>
           <?php else: ?>
             <p class="text-center mt-30px" style="font-size:13px;color:#5e5e5e;">Mohon maaf, saat ini layanan di tutup, Layanan kembali di buka tanggal 1-5 & 15-20. Info lebih lanjut hubungi admin.</p>
@@ -71,6 +87,17 @@ $(document).ready(function(){
   $('.rupiah').mask('00.000.000.000', {reverse: true});
 });
 
+
+function terms_changed(termsCheckBox){
+    //If the checkbox has been checked
+    if(termsCheckBox.checked){
+        //Set the disabled property to FALSE and enable the button.
+        document.getElementById("submit").disabled = false;
+    } else{
+        //Otherwise, disable the submit button.
+        document.getElementById("submit").disabled = true;
+    }
+}
 
 $("#form").submit(function(e){
 e.preventDefault();

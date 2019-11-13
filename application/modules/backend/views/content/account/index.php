@@ -139,10 +139,6 @@
     </div>
   </div>
 
-  <div class="col-md-8 mx-auto mb-2">
-        <a href="<?=site_url("backend/account/ubah_data")?>" class="badge badge-sm badge-warning text-white"><i class="ti-pencil-alt"></i> UPDATE DATA</a>
-        <a id="rst_pwd" href="<?=site_url("backend/account/reset_password")?>" class="badge badge-sm badge-warning text-white"  id="reset_password"> <i class="ti-key"></i> UPDATE PASSWORD</a>
-  </div>
 
 
   <div class="col-md-8 mx-auto mb-2">
@@ -175,13 +171,21 @@
     </div>
   </div>
 
+  <div class="col-md-8 mx-auto mb-2">
+    <div class="card">
+      <div class="card-body">
+        <p style="font-size:12px" class="text-center">
+          Untuk perubahan data, silahkan hubungi admin.
+        </p>
+      </div>
+    </div>
+  </div>
 
 
 
   <div class="col-md-8 mx-auto mb-2">
-        <a href="<?=site_url("backend/account/berkas")?>" class="badge badge-sm badge-warning text-white"><i class="ti-pencil-alt"></i> UPDATE FILE BERKAS</a>
+      <a id="rst_pwd" href="<?=site_url("backend/account/reset_password")?>" class="badge badge-sm badge-warning text-white"  id="reset_password"> <i class="ti-key"></i> UPDATE PASSWORD</a>
   </div>
-
 
 
 

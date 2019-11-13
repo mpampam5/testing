@@ -26,7 +26,7 @@ function total_deposit()
   $qry = $ci->db->query("SELECT
                           	deposit.id_deposit,
                           	deposit.id_person,
-                          	Sum( deposit.amount ) AS amount,
+                          	Sum( deposit.amount_acc) AS amount,
                           	deposit.status
                           FROM
                           	deposit

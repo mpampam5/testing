@@ -83,7 +83,7 @@ class Person extends MY_Controller{
 
   function add()
     {
-      if (profile("id_level")!=4) {
+      if (profile("id_level")==3) {
         $this->template->set_title("Person");
         $data = [
                   "action"          => site_url("backend/person/add_action"),
@@ -118,6 +118,7 @@ class Person extends MY_Controller{
     function add_action()
         {
           if ($this->input->is_ajax_request()) {
+            if (profile("id_level")==3) {
               $json = array('success'=>false, 'alert'=>array(), 'url'=>array());
               $this->form_validation->set_rules("nik","&nbsp;*","trim|xss_clean|min_length[16]|max_length[16]|required|numeric|callback__cek_nik");
               $this->form_validation->set_rules("email","*&nbsp;","trim|xss_clean|required|valid_email|callback__cek_email");
@@ -125,22 +126,22 @@ class Person extends MY_Controller{
                 "is_unique" => "* sudah digunakan"]);
               $this->_rules();
               if ($this->form_validation->run()) {
-                $level = $this->input->post("status_level",true);
-                if (profile("id_level")==1) {
-                  $kd = "COF";
-                  $lev =  2;
-                }elseif (profile("id_level")==2) {
-                  $kd = "AGN";
-                  $lev =  3;
-                }elseif (profile("id_level")==3) {
-                  $kd = "MEM";
-                  $lev =  4;
-                }
+                // $level = $this->input->post("status_level",true);
+                // if (profile("id_level")==1) {
+                //   $kd = "COF";
+                //   $lev =  2;
+                // }elseif (profile("id_level")==2) {
+                //   $kd = "AGN";
+                //   $lev =  3;
+                // }elseif (profile("id_level")==3) {
+                //   $kd = "MEM";
+                //   $lev =  4;
+                // }
 
                 $data = [
-                          "kode_person"   => $this->_kd_reg($kd),
+                          "kode_person"   => $this->_kd_reg("MEM"),
                           "is_parent"     => sess("id_person"),
-                          "id_level"     => $lev,
+                          "id_level"     => 4,
                           "nik"          => $this->input->post("nik",true),
                           "nama"          => $this->input->post("nama",true),
                           "telepon1"      => $this->input->post("telepon1",true),
@@ -191,6 +192,7 @@ class Person extends MY_Controller{
               echo json_encode($json);
           }
         }
+      }
 
 
     function _kd_reg($str)
@@ -232,5 +234,55 @@ class Person extends MY_Controller{
       }
 
 
+
+
+      function _send_email($data_email)
+      {
+
+
+          $subject  = "Data Membership";
+
+          $template = $this->load->view('content/person/template_email',$data_email,TRUE);
+
+          $config['charset']      = 'utf-8';
+          $config['protocol']     = "smtp";
+          $config['mailtype']     = "html";
+          $config['smtp_host']    = "ssl://srv75.niagahoster.com";//pengaturan smtp
+          $config['smtp_port']    = 465;
+          $config['smtp_user']    = "noreply@fasaindonesia.com"; // isi dengan email kamu
+          $config['smtp_pass']    = "@@111111qwerty"; // isi dengan password kamu
+          $config['smtp_timeout'] = 4; //4 second
+          $config['crlf']         = "\r\n";
+          $config['newline']      = "\r\n";
+
+          $this->load->library('email',$config);
+          //konfigurasi pengiriman
+
+          $this->email->from($config['smtp_user'], setting_system("title"));
+          $this->email->to($data_email['email']);
+          $this->email->subject($subject);
+          $this->email->message($template);
+          if ($this->email->send()) {
+            echo "string";
+          }else {
+            echo "0";
+        }
+      }
+
+
+      function cek_temp()
+      {
+
+        $data_email = array('id_register' => "MEM09348920",
+                            'nik' => "1234567890342432",
+                            'nama' => "muhammad irfan ibnu",
+                            'email' => "mpampam5@gmail.com",
+                            'telepon' => "0432423423",
+                            'username' => "mpampam8888",
+                            'password' => "2wsx.lo9",
+                            );
+        // $this->load->view('content/register/template_emails',$data_email);
+        $this->_send_email($data_email);
+      }
 
 }

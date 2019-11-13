@@ -193,3 +193,12 @@ function omset($id_child_array)
   }
 
 }
+
+
+function total_child()
+{
+  $ci=& get_instance();
+  $query = $ci->db->get_where("tb_person", array("is_parent"=>$ci->session->userdata("id_person")));
+
+  return $query->num_rows();
+}

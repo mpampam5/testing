@@ -47,22 +47,22 @@
 
             <?php else: ?>
               <?php if (setting_financial("invesment_status")=="on"): ?>
-              <div class="row  mb-4">
-                <div class="col-md-7 mx-auto">
-                  <div class="card ">
-                    <div class="card-body pb-0">
-                      <div class="form-group">
-                        <div class="input-group">
-                          <input type="text" class="form-control rupiah" id="value_invest" autocomplete="off" placeholder="Masukkan jumlah investasi anda">
-                          <div class="input-group-append">
-                            <button class="btn btn-sm btn-primary" id="invest" type="button">Invest</button>
+                <div class="row  mb-4">
+                  <div class="col-md-7 mx-auto">
+                    <div class="card ">
+                      <div class="card-body pb-0">
+                        <div class="form-group">
+                          <div class="input-group">
+                            <input type="text" class="form-control rupiah" id="value_invest" autocomplete="off" placeholder="Masukkan jumlah investasi anda">
+                            <div class="input-group-append">
+                              <button class="btn btn-sm btn-primary" id="invest" type="button">Invest</button>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
             <?php endif; ?>
           <?php endif; ?>
 
@@ -119,14 +119,14 @@
 
             <div class="col-md-3 mb-2 stretch-card">
               <div class="card" style="background-color:#f39c12;">
-                <a href="<?=site_url("backend/investment/omset")?>" style="text-decoration:none;color:#fff">
+                <a href="<?=site_url("backend/person")?>" style="text-decoration:none;color:#fff">
                 <div class="card-body">
-                  <p class="card-title text-md-center text-xl-left text-white">Omset</p>
+                  <p class="card-title text-md-center text-xl-left text-white">Membership</p>
                   <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
                     <h5 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">
-                        Rp.<?=format_rupiah(omset($this->btree->get_all_id_children(sess('id_person'))))?>
+                        <?=total_child()?>
                     </h5>
-                    <i class="ti-layers-alt icon-md text-white mb-0 mb-md-3 mb-xl-0"></i>
+                    <i class="ti-user icon-md text-white mb-0 mb-md-3 mb-xl-0"></i>
                   </div>
                 </div>
                 </a>
@@ -245,6 +245,8 @@
 $(document).ready(function(){
   $('.rupiah').mask('00.000.000.000', {reverse: true});
 });
+
+
 
 $(document).on("click","#invest",function(e)
 {

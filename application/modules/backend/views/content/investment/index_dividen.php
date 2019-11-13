@@ -20,7 +20,7 @@
     <div class="col-md-12 mx-auto">
       <div class="card">
         <div class="card-body">
-          <h5>Total Profit <span class="text-primary">Rp.<?=format_rupiah(total_investment_dividen())?></span></h5>
+          <h5>Total Comission <span class="text-primary">Rp.<?=format_rupiah(total_investment_dividen())?></span></h5>
           <div class="table-responsive">
             <table id="table" class="table table-bordered">
               <thead class=" bg-black text-silver">
@@ -66,9 +66,9 @@ $(document).ready(function() {
               render:function(data,type,row,meta)
               {
                 return `<span class="text-info">`+data+`</span>
-                        <i class="ti-angle-double-right"></i> <span class="text-success">Rp.`+row.amount_invest+`</span>
+                        <i class="ti-angle-double-right"></i> <span class="text-success">Rp.`+row.amount_invest+`</span>&nbsp;
                         <i class="ti-angle-double-right"></i> profit ke-`+row.no_dividen+
-                        `<i class="ti-angle-double-right"></i> <span class="text-success">`+row.username+`</span>`+
+                        `&nbsp;<i class="ti-angle-double-right"></i> <span class="text-success">`+row.username+`</span>&nbsp;`+
                         `<i class="ti-angle-double-right"></i> <span class="text-success">`+row.nama+`</span>`;
               }
             },
