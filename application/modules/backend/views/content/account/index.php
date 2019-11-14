@@ -74,6 +74,11 @@
                 <td>: <?=$row->alamat?></td>
               </tr>
 
+              <tr>
+                <th>Ukuran Baju</th>
+                <td>: <?=$row->ukuran_baju?></td>
+              </tr>
+
             </table>
 
       </div>

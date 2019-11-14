@@ -33,7 +33,7 @@
 <body>
 
 <!-- main -->
-<div class="w3layouts-main">
+<div class="w3layouts-main" style="background-image: url('<?=base_url()?>_template/<?=setting_system('background')?>');">
 	<div class="bg-layer">
 		<h1>Login</h1>
 		<div class="header-main">
@@ -56,10 +56,10 @@
 						<button type="submit" class="btn" id="submit">Log In</button>
 					</div>
 
-					<div class="links">
-						<p><a href="#">Forgot Password?</a></p>
+					<!-- <div class="links">
+						<p><a href="#" id="forgot">Forgot Password?</a></p>
 						<div class="clear"></div>
-					</div>
+					</div> -->
 				</form>
 			</div>
 
@@ -78,9 +78,37 @@
 		<!-- //copyright -->
 	</div>
 </div>
+
+
+<!-- <div class="modal fade" id="modalGue" tabindex="-1" role="dialog"  aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="modalTitle">Forgot Password</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+						</div>
+						<div class="modal-body" id="modalContent" style="max-height: 687px; overflow-y: auto;">
+							Silahkan Hubungi admin. mungkin anda akan di berikan beberapa pertanyaan mengenai data pribadi anda.
+						</div>
+					</div>
+				</div>
+		</div> -->
 <!-- //main -->
 	<script src="<?=base_url()?>_template/front/vendors/jquery-toast-plugin/jquery.toast.min.js"></script>
 <script type="text/javascript">
+
+// $(document).on("click","#forgot",function(e){
+//     e.preventDefault();
+//
+//     $('.modal-dialog').removeClass('modal-lg')
+//                       .removeClass('modal-sm')
+//                       .addClass('modal-sm');
+//     $("#modalGue").modal('show');
+//   });
+
+
   $("#form").submit(function(e){
     e.preventDefault();
     var me = $(this);

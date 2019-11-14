@@ -42,6 +42,7 @@
 
 
 $(document).ready(function() {
+
     var table_dividen = $("#table").dataTable({
         oLanguage: {
             sProcessing: '<div class="spinner-border spinner-border-sm text-warning"></div> loading'
@@ -77,9 +78,11 @@ $(document).ready(function() {
               "data":"amount",
               "orderable": false,
               "searchable": false,
-              render:function(data,type,meta,row)
+              render:function(data,type,row,meta)
               {
-                return 'Rp.'+data;
+                var val = parseInt(data) + parseInt(row.biaya_admin);
+                    hasil = parseInt(val).toLocaleString();
+                return '<span class="uang">Rp.'+hasil.replace(/\,/g, '.')+'</span>';
               }
             },
             {
@@ -99,6 +102,10 @@ $(document).ready(function() {
               "data":"action",
               "orderable": false,
               "className":"text-center"
+            },
+            {
+              "data":"biaya_admin",
+              "visible":false
             }
         ],
         order: [[0, 'desc']],

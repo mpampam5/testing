@@ -34,10 +34,11 @@
                 </tr>
               <?php endif; ?>
               </table>
-              <form id="form" action="<?=$action?>">
+              <form id="form" action="<?=$action?>" autocomplete="off">
                 <div class="form-group">
                   <label id="amount">Amount (Rp)</label>
-                  <input type="text" class="form-control rupiah" name="amount" placeholder="Amount">
+                  <input type="text" class="form-control rupiah" name="amount" onkeyup="myInfoadmin()" placeholder="Amount">
+                  <span class="text-primary mt-1" style="font-size:12px" id="info-admin"></span>
                 </div>
 
                 <div class="form-group">
@@ -73,6 +74,17 @@ $(document).ready(function(){
   $('.rupiah').mask('00.000.000.000', {reverse: true});
 });
 
+
+function myInfoadmin()
+{
+  var value = $('.rupiah').val();
+      val = value.replace(/\./g, '');
+      if (val >= 5000000) {
+        $('#info-admin').hide().fadeIn(500).html("* Biaya administrasi berlaku Rp.<?=format_rupiah(setting_financial("biaya_admin"))?>");
+      }else {
+        $('#info-admin').fadeOut(500);
+      }
+}
 
 $("#form").submit(function(e){
 e.preventDefault();

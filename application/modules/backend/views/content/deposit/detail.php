@@ -30,6 +30,11 @@
           </tr>
 
           <tr>
+            <th>Biaya administrasi</th>
+            <td>: Rp.<?=format_rupiah($row->biaya_admin)?></td>
+          </tr>
+
+          <tr>
             <th>Status</th>
             <td>:
                   <?php if ($row->status=="approved"): ?>
@@ -70,7 +75,7 @@
         <?php if ($row->status == "process"): ?>
           <hr>
           <ul style="font-size:12px;color:#5e5e5e;">
-            <li>Silahkan Transfer Sebesar <b>Rp.<?=format_rupiah($row->amount)?></b></li>
+            <li>Silahkan Transfer Sebesar <b>Rp.<?=format_rupiah(($row->amount+$row->biaya_admin))?></b></li>
             <li>Untuk mempermudah proses verifikasi, silahkan transfer sesuai nominal di atas.</li>
           </ul>
         <?php endif; ?>

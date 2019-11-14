@@ -47,17 +47,24 @@
                     </div>
                   </div>
 
-                  <div class="col-sm-6">
+                  <div class="col-sm-4">
                     <div class="form-group">
                       <label for="">Telepon 1</label><span style="font-size:11px" class="text-primary pl-2">* No.telepon yang aktif</span>
                       <input type="text" class="form-control" id="telepon1" name="telepon1" placeholder="Telepon 1"value="<?=$row->telepon1?>">
                     </div>
                   </div>
 
-                  <div class="col-sm-6">
+                  <div class="col-sm-4">
                     <div class="form-group">
                       <label for="">Telepon 2</label>
                       <input type="text" class="form-control" id="telepon2" name="telepon2" placeholder="Telepon 2"value="<?=$row->telepon2?>">
+                    </div>
+                  </div>
+
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <label for="">Ukuran Baju</label>
+                      <input type="text" class="form-control" id="ukuran_baju" name="ukuran_baju" placeholder="S,M,L,XL,XXL" value="<?=$row->ukuran_baju?>">
                     </div>
                   </div>
 

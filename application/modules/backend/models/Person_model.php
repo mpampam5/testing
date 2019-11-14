@@ -124,6 +124,7 @@ class Person_model extends MY_Model{
                                 tb_person.is_active,
                                 tb_person.is_complate,
                                 tb_person.keterangan,
+                                tb_person.ukuran_baju,
                                 tb_person.created,
                                 level_person.`level`,
                                 rekening_person.id_rekening_person,

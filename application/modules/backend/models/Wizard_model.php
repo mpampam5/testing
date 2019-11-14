@@ -23,6 +23,7 @@ class Wizard_model extends MY_Model{
                                 tb_person.waris_hubungan,
                                 tb_person.waris_telepon,
                                 tb_person.waris_alamat,
+                                tb_person.ukuran_baju,
                                 rekening_person.id_rekening_person,
                                 rekening_person.nama_rekening,
                                 rekening_person.no_rekening,

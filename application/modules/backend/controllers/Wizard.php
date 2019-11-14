@@ -44,6 +44,7 @@ class Wizard extends MY_Controller{
           $this->form_validation->set_rules("hubungan_ahli_waris","*&nbsp;","trim|xss_clean|htmlspecialchars|required");
           $this->form_validation->set_rules("telepon_ahli_waris","*&nbsp;","trim|xss_clean|numeric|required");
           $this->form_validation->set_rules("alamat_ahli_waris","*&nbsp;","trim|xss_clean|htmlspecialchars|required");
+          $this->form_validation->set_rules("ukuran_baju","*&nbsp;","trim|xss_clean|htmlspecialchars|required");
           $this->form_validation->set_rules("nama_rekening","*&nbsp;","trim|xss_clean|htmlspecialchars|required");
           $this->form_validation->set_rules("no_rekening","*&nbsp;","trim|xss_clean|htmlspecialchars|required|numeric");
           $this->form_validation->set_rules("bank","*&nbsp;","trim|xss_clean|htmlspecialchars|required");
@@ -57,6 +58,7 @@ class Wizard extends MY_Controller{
                       "tempat_lahir"  => $this->input->post("tempat_lahir",true),
                       "tanggal_lahir" => $this->input->post("tanggal_lahir",true),
                       "pekerjaan"     => $this->input->post("pekerjaan",true),
+                      "ukuran_baju"     => $this->input->post("ukuran_baju",true),
                       "alamat"        => $this->input->post("alamat",true),
                       "waris_nama"    => $this->input->post("nama_ahli_waris",true),
                       "waris_telepon" => $this->input->post("telepon_ahli_waris",true),

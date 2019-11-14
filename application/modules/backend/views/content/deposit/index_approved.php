@@ -75,9 +75,11 @@ $(document).ready(function() {
             {
               "data":"amount",
               "searchable": false,
-              render:function(data,type,meta,row)
+              render:function(data,type,row,meta)
               {
-                return 'Rp.'+data;
+                var val = parseInt(data) + parseInt(row.biaya_admin);
+                    hasil = parseInt(val).toLocaleString();
+                return '<span class="uang">Rp.'+hasil.replace(/\,/g, '.')+'</span>';
               }
             },
             {
@@ -91,6 +93,10 @@ $(document).ready(function() {
             {
               "data":"action",
               "className":"text-center"
+            },
+            {
+              "data":"biaya_admin",
+              "visible":false
             }
         ],
         order: [[0, 'asc']],

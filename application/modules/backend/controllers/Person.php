@@ -137,9 +137,9 @@ class Person extends MY_Controller{
                 //   $kd = "MEM";
                 //   $lev =  4;
                 // }
-
+                $kd_person = $this->_kd_reg("MEM");
                 $data = [
-                          "kode_person"   => $this->_kd_reg("MEM"),
+                          "kode_person"   => $kd_person,
                           "is_parent"     => sess("id_person"),
                           "id_level"     => 4,
                           "nik"          => $this->input->post("nik",true),
@@ -179,6 +179,19 @@ class Person extends MY_Controller{
                 ];
                 $this->model->get_insert("rekening_person",$data_rekening);
 
+
+                $data_email = ["id_register"  => $kd_person,
+                              "email"         => $this->input->post("email",true),
+                              "tempat_lahir"  => $this->input->post("tempat_lahir",true),
+                              "tanggal_lahir" => $this->input->post("tanggal_lahir",true),
+                              "telepon"      => $this->input->post("telepon1",true),
+                              "nik"         => $this->input->post("nik",true),
+                              "nama"        => $this->input->post("nama",true),
+                              "username" => $this->input->post("username",true),
+              ];
+
+                $this->_send_email($data_email);
+
                 $json['alert'] = "add data successfully";
                 $json['success'] =  true;
                 $json['url'] =  site_url("backend/person");
@@ -194,6 +207,39 @@ class Person extends MY_Controller{
         }
       }
 
+
+      function _send_email($data_email)
+      {
+
+
+          $subject  = "Data Membership";
+
+          $template = $this->load->view('content/person/template_email',$data_email,TRUE);
+
+          $config['charset']      = 'utf-8';
+          $config['protocol']     = "smtp";
+          $config['mailtype']     = "html";
+          $config['smtp_host']    = "ssl://cheetahfibonacci.com";//pengaturan smtp
+          $config['smtp_port']    = 465;
+          $config['smtp_user']    = "no-reply@cheetahfibonacci.com"; // isi dengan email kamu
+          $config['smtp_pass']    = "@@111111qwerty"; // isi dengan password kamu
+          $config['smtp_timeout'] = 4; //4 second
+          $config['crlf']         = "\r\n";
+          $config['newline']      = "\r\n";
+
+          $this->load->library('email',$config);
+          //konfigurasi pengiriman
+
+          $this->email->from($config['smtp_user'], setting_system("title"));
+          $this->email->to($data_email['email']);
+          $this->email->subject($subject);
+          $this->email->message($template);
+          if ($this->email->send()) {
+            return true;
+          }else {
+            return false;
+        }
+      }
 
     function _kd_reg($str)
     {
@@ -236,53 +282,21 @@ class Person extends MY_Controller{
 
 
 
-      function _send_email($data_email)
-      {
 
 
-          $subject  = "Data Membership";
-
-          $template = $this->load->view('content/person/template_email',$data_email,TRUE);
-
-          $config['charset']      = 'utf-8';
-          $config['protocol']     = "smtp";
-          $config['mailtype']     = "html";
-          $config['smtp_host']    = "ssl://srv75.niagahoster.com";//pengaturan smtp
-          $config['smtp_port']    = 465;
-          $config['smtp_user']    = "noreply@fasaindonesia.com"; // isi dengan email kamu
-          $config['smtp_pass']    = "@@111111qwerty"; // isi dengan password kamu
-          $config['smtp_timeout'] = 4; //4 second
-          $config['crlf']         = "\r\n";
-          $config['newline']      = "\r\n";
-
-          $this->load->library('email',$config);
-          //konfigurasi pengiriman
-
-          $this->email->from($config['smtp_user'], setting_system("title"));
-          $this->email->to($data_email['email']);
-          $this->email->subject($subject);
-          $this->email->message($template);
-          if ($this->email->send()) {
-            echo "string";
-          }else {
-            echo "0";
-        }
-      }
-
-
-      function cek_temp()
-      {
-
-        $data_email = array('id_register' => "MEM09348920",
-                            'nik' => "1234567890342432",
-                            'nama' => "muhammad irfan ibnu",
-                            'email' => "mpampam5@gmail.com",
-                            'telepon' => "0432423423",
-                            'username' => "mpampam8888",
-                            'password' => "2wsx.lo9",
-                            );
-        // $this->load->view('content/register/template_emails',$data_email);
-        $this->_send_email($data_email);
-      }
+      // function cek_temp()
+      // {
+      //
+      //   $data_email = array('id_register' => "MEM09348920",
+      //                       'nik' => "1234567890342432",
+      //                       'nama' => "muhammad irfan ibnu",
+      //                       'email' => "mpampam5@gmail.com",
+      //                       'telepon' => "0432423423",
+      //                       'username' => "mpampam8888",
+      //                       'password' => "2wsx.lo9",
+      //                       );
+      //   // $this->load->view('content/register/template_emails',$data_email);
+      //   $this->_send_email($data_email);
+      // }
 
 }

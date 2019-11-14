@@ -24,6 +24,7 @@ class Account_model extends MY_Model{
                                 tb_person.waris_hubungan,
                                 tb_person.waris_telepon,
                                 tb_person.waris_alamat,
+                                tb_person.ukuran_baju,
                                 tb_person.is_active,
                                 tb_person.is_complate,
                                 tb_person.keterangan,

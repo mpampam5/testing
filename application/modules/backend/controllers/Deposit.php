@@ -55,11 +55,16 @@ class Deposit extends MY_Controller{
             $randomNum = substr(str_shuffle("1234567"), 0, 3);
             $amount =replace_rupiah($this->input->post("amount"));
             $amounts = substr_replace($amount,$randomNum,-3);
-
+            if ($amount >= 5000000) {
+              $biaya_admin = setting_financial("biaya_admin");
+            }else {
+              $biaya_admin = 0;
+            }
             $data = [
                        "kode_transaksi" => $this->_kode(),
                        "id_person" => sess('id_person'),
                        "amount"    => $amounts,
+                       "biaya_admin" => $biaya_admin,
                        "metode_pembayaran" => $this->input->post("metode_pembayaran"),
                        "created"   => date("Y-m-d H:i:s")
                   ];
