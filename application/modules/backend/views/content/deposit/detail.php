@@ -78,6 +78,8 @@
             <li>Silahkan Transfer Sebesar <b>Rp.<?=format_rupiah(($row->amount+$row->biaya_admin))?></b></li>
             <li>Untuk mempermudah proses verifikasi, silahkan transfer sesuai nominal di atas.</li>
           </ul>
+          
+          <p style="font-size:12px;color:#5e5e5e;font-weight:bold;">Silahkan kirim bukti transfer anda di Whatsapp Admin +6285806234028</p>
         <?php endif; ?>
 
 

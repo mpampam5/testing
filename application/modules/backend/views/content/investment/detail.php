@@ -39,6 +39,11 @@
           </tr>
 
           <tr>
+            <th>Alamat Pengiriman SPK</th>
+            <td>: <?=$row->alamat_kirim_spk?></td>
+          </tr>
+
+          <tr>
             <th>Status</th>
             <td>:
               <?php if ($row->status=="ongoing"): ?>

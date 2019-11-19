@@ -45,6 +45,11 @@
                 </div>
 
                 <div class="form-group">
+                  <label id="alamat_kirim_spk">Alamat Pengiriman SPK</label>
+                  <textarea class="form-control" name="alamat_kirim_spk" rows="3" cols="80" placeholder="Masukkan alamat pengiriman SPK"></textarea>
+                </div>
+
+                <div class="form-group">
                   <label id="password">Verifikasi Password</label>
                   <input type="password" class="form-control" name="password" placeholder="Masukkan Password Akun Anda">
                 </div>

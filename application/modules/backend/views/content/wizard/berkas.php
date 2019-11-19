@@ -31,7 +31,7 @@ line-height: 10px;
           <div id="data-info"></div>
           <div class="form-group" id="foto">
             <label class="label-title" id="foto_personal">FOTO PERSONAL</label>
-            <input type="file" name="foto_personal" id="upload-foto" class="file-upload-default" accept="image/JPEG">
+            <input type="file" name="foto_personal" id="upload-foto" class="file-upload-default" accept="image/JPEG,image/PNG">
             <div class="input-group col-xs-12">
               <input type="text" name="foto_personal" id="image-foto" class="form-control file-upload-info" value="<?=$row->file_foto?>" readonly placeholder="Upload File">
               <span class="input-group-append">
@@ -44,7 +44,7 @@ line-height: 10px;
                   <a href="<?=base_url()."_template/files/".enc_uri($row->kode_person).'/'.$row->file_foto?>" data-fancybox="gallery" class="badge badge-success"><i class="fa fa-file"></i> Lihat file</a>
                 </p>
               <?php else: ?>
-                <p class="font-form">Foto Wajah harus jelas (Format jpg & max size 1mb)</p>
+                <p class="font-form">Foto Wajah harus jelas (Format JPG|PNG & max size 1mb)</p>
             <?php endif; ?>
           </div>
         </div>
@@ -53,7 +53,7 @@ line-height: 10px;
         <div class="col-sm-12">
           <div class="form-group" id="ktp">
             <label class="label-title" id="foto_ktp">FILE KTP</label>
-            <input type="file" name="foto_ktp" id="upload-ktp" class="file-upload-default" accept="image/JPEG">
+            <input type="file" name="foto_ktp" id="upload-ktp" class="file-upload-default" accept="image/JPEG,image/PNG">
             <div class="input-group col-xs-12">
               <input type="text" name="foto_ktp" id="image-ktp" class="form-control file-upload-info" value="<?=$row->file_ktp?>" readonly placeholder="Upload File">
               <span class="input-group-append">
@@ -65,7 +65,7 @@ line-height: 10px;
                 <a href="<?=base_url()."_template/files/".enc_uri($row->kode_person).'/'.$row->file_ktp?>" data-fancybox="gallery" class="badge badge-success"><i class="fa fa-file"></i> Lihat file</a>
               </p>
               <?php else: ?>
-                <p class="font-form">File KTP harus jelas (Format jpg & max size 1mb)</p>
+                <p class="font-form">File KTP harus jelas (Format JPG|PNG & max size 1mb)</p>
             <?php endif; ?>
           </div>
         </div>
@@ -75,7 +75,7 @@ line-height: 10px;
           <div id="data-info"></div>
           <div class="form-group" id="rek">
             <label class="label-title" id="foto_rek">FILE BUKU REKENING</label>
-            <input type="file" name="foto_rek" id="upload-rek" class="file-upload-default" accept="image/JPEG">
+            <input type="file" name="foto_rek" id="upload-rek" class="file-upload-default" accept="image/JPEG,image/PNG">
             <div class="input-group col-xs-12">
               <input type="text" name="foto_rek" id="image-rek" class="form-control file-upload-info" value="<?=$row->file_foto_rek?>" readonly placeholder="Upload Image">
               <span class="input-group-append">
@@ -87,7 +87,7 @@ line-height: 10px;
                 <a href="<?=base_url()."_template/files/".enc_uri($row->kode_person).'/'.$row->file_foto_rek?>" data-fancybox="gallery" class="badge badge-success"><i class="fa fa-file"></i> Lihat file</a>
               </p>
               <?php else: ?>
-                <p class="font-form">File KK harus jelas (Format jpg & max size 1mb)</p>
+                <p class="font-form">File KK harus jelas (Format JPG|PNG & max size 1mb)</p>
             <?php endif; ?>
           </div>
         </div>

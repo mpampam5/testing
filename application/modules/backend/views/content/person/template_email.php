@@ -171,14 +171,14 @@ a h1{
                    <table width="100%" cellspacing="0" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;">
                      <tr style="border-collapse:collapse;">
                       <td align="center" style="padding-top:15px;Margin:0;">
-                        <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;line-height:21px;color:#ffb500!important;">
-                          <b style="color:#ffb500">Contact us :</b>
+                        <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;line-height:21px;color:#ffb500;">
+                          <b style="color:#ffb500!important">Contact us :</b>
                           <br>
-                           <span style="color:#ffb500"><?=setting_system("telepon1")?>&nbsp;/&nbsp;<?=setting_system("telepon2")?></span>
+                           <span style="color:#ffb500!important"><?=setting_system("telepon1")?>&nbsp;/&nbsp;<?=setting_system("telepon2")?></span>
                           <a style="color:#ffb500" target="_blank" href="<?=setting_system("email")?>" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;font-size:14px;text-decoration:none;color:#666666;"><?=setting_system("email")?></a>
                           <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:12px;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;line-height:21px;color:#ffb500;text-align:center"><?=setting_system("alamat")?></p>
-                          <br>
-                          <a style="font-size:14px;color:#ffb500;text-decoration:none;font-weight:bold" target="_blank" href="<?=site_url()?>"><?=$_SERVER["SERVER_NAME"]?></a>
+                          
+                          
                         </p>
                       </td>
                      </tr>

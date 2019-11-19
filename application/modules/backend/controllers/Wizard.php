@@ -174,7 +174,7 @@ function _cek_email_update($str,$email_lama)
                   mkdir('./_template/files/'.enc_uri(profile('kode_person')), 0777, true);
               }
               $config['upload_path'] = "./_template/files/".enc_uri(profile('kode_person'))."/";
-              $config['allowed_types'] = 'jpg';
+              $config['allowed_types'] = 'jpg|jpeg|png';
               $config['overwrite'] = true;
               $config['max_size']  = '1024';
               $config['file_name']  = "$image";
@@ -184,7 +184,7 @@ function _cek_email_update($str,$email_lama)
 
               if (!$this->upload->do_upload('foto_personal')){
                   $json['header_alert'] = "error";
-                  $json['alert'] = "File tidak valid, format file harus jpg & ukuran maksimal 1mb";
+                  $json['alert'] = "File tidak valid, format file harus jpg|jpeg|png & ukuran maksimal 1mb";
               }else {
                   $where = array('id_person' => sess("id_person"));
                   $this->model->get_update("tb_person",["file_foto"=>$image],$where);
@@ -209,7 +209,7 @@ function _cek_email_update($str,$email_lama)
                   mkdir('./_template/files/'.enc_uri(profile('kode_person')), 0777, true);
               }
               $config['upload_path'] = "./_template/files/".enc_uri(profile('kode_person'))."/";
-              $config['allowed_types'] = 'jpg';
+              $config['allowed_types'] = 'jpg|jpeg|png';
               $config['overwrite'] = true;
               $config['max_size']  = '1024';
               $config['file_name']  = "$image";
@@ -219,7 +219,7 @@ function _cek_email_update($str,$email_lama)
 
               if (!$this->upload->do_upload('foto_ktp')){
                   $json['header_alert'] = "error";
-                  $json['alert'] = "File tidak valid, format file harus jpg & ukuran maksimal 1mb";
+                  $json['alert'] = "File tidak valid, format file harus jpg|jpeg|png & ukuran maksimal 1mb";
               }else {
                   $where = array('id_person' => sess("id_person"));
                   $this->model->get_update("tb_person",["file_ktp"=>$image],$where);
@@ -247,7 +247,7 @@ function _cek_email_update($str,$email_lama)
                       mkdir('./_template/files/'.enc_uri(profile('kode_person')), 0777, true);
                   }
                   $config['upload_path'] = "./_template/files/".enc_uri(profile('kode_person'))."/";
-                  $config['allowed_types'] = 'jpg';
+                  $config['allowed_types'] = 'jpg|jpeg|png';
                   $config['overwrite'] = true;
                   $config['max_size']  = '1024';
                   $config['file_name']  = "$image";
@@ -257,7 +257,7 @@ function _cek_email_update($str,$email_lama)
 
                   if (!$this->upload->do_upload('foto_rek')){
                       $json['header_alert'] = "error";
-                      $json['alert'] = "File tidak valid, format file harus jpg & ukuran maksimal 1mb";
+                      $json['alert'] = "File tidak valid, format file harus jpg|jpeg|png & ukuran maksimal 1mb";
                   }else {
                       $where = array('id_person' => sess("id_person"));
                       $this->model->get_update("rekening_person",["file_foto_rek"=>$image],$where);

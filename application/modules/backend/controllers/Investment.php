@@ -66,6 +66,7 @@ class Investment extends MY_Controller{
           if (setting_financial("invesment_status")=="on") {
             $json = array('success'=>false, 'alert'=>array(), 'url'=>array(),'header_alert'=>array());
             $this->form_validation->set_rules("amount","&nbsp;*","trim|xss_clean|required|callback__cek_investment");
+            $this->form_validation->set_rules("alamat_kirim_spk","&nbsp;*","trim|xss_clean|required|htmlspecialchars");
             $this->form_validation->set_rules("password","*&nbsp;","trim|xss_clean|required|callback__cek_password");
             $this->form_validation->set_error_delimiters('<span class="error ml-1 text-danger" style="font-size:11px">','</span>');
             if ($this->form_validation->run()) {
@@ -93,6 +94,7 @@ class Investment extends MY_Controller{
                            "kode_invest"    => $kode,
                            "id_person"      => sess('id_person'),
                            "amount"         => $amount,
+                           "alamat_kirim_spk" => $this->input->post("alamat_kirim_spk",true),
                            "group"         => $group,
                            "kontrak_start"  => $kontrak_start,
                            "kontrak_end"    => $kontrak_end,
