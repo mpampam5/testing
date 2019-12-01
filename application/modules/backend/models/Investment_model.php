@@ -72,6 +72,7 @@ class Investment_model extends MY_Model{
                               investment.amount,
                               investment.alamat_kirim_spk,
                               investment.`status`,
+                              investment.qr_code,
                               investment.created,
                               investment.kontrak_start,
                               investment.kontrak_end,

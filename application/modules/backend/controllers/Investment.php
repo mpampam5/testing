@@ -74,13 +74,19 @@ class Investment extends MY_Controller{
               $masa_kontrak = setting_financial("invesment_kontrak");
               $tgl = date("d");
 
-              if ($tgl >= "01" AND $tgl <= "14") {
+              if ($tgl >= "01" AND $tgl <= "5") {
                 $kontrak_start = date("Y-m")."-01";
                 $group = 1;
-              }elseif ($tgl >= "15" AND $tgl <= "20") {
+              }elseif ($tgl >= "06" AND $tgl <= "14") {
+                 $kontrak_start = date('Y-m-d', strtotime("+1 month", strtotime(date("Y-m")."-15")));
+                $group = 15;
+              } elseif ($tgl >= "15" AND $tgl <= "20") {
                 $kontrak_start = date("Y-m")."-15";
                 $group = 15;
-              }else {
+              }elseif ($tgl >= "21" AND $tgl <= "31") {
+                $kontrak_start = date('Y-m-d', strtotime("+1 month", strtotime(date("Y-m")."-01")));
+                $group = 1;
+              } else {
                 $kontrak_start = 000;
               }
 
@@ -98,6 +104,7 @@ class Investment extends MY_Controller{
                            "group"         => $group,
                            "kontrak_start"  => $kontrak_start,
                            "kontrak_end"    => $kontrak_end,
+                           "qr_code"        => url_title(strtolower(profile("nama")),'underscore')."_".$kode.'.png',
                            "created"        => date("Y-m-d H:i:s")
                       ];
 
@@ -131,9 +138,9 @@ class Investment extends MY_Controller{
                $config['white']        = array(70,130,180); // array, default is array(0,0,0)
                $this->ciqrcode->initialize($config);
 
-               $image_name="qr_".$kode.'.png'; //buat name dari qr code sesuai dengan nim
+               $image_name = url_title(strtolower(profile("nama")),'underscore')."_".$kode.'.png'; //buat name dari qr code sesuai dengan nim
 
-               $params['data'] = "qr_".$kode; //data yang akan di jadikan QR CODE
+               $params['data'] = url_title(strtolower(profile("nama")),'underscore')."_".$kode; //data yang akan di jadikan QR CODE
                $params['level'] = 'H'; //H=High
                $params['size'] = 10;
                $params['savename'] = FCPATH.$config['imagedir'].$image_name; //simpan image QR CODE ke folder assets/images/

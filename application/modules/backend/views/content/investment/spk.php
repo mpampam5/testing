@@ -91,14 +91,23 @@
       <header>
           <img class="logo" src="<?=base_url()?>/_template/front/images/cheeta.png"/>
           <h2><?=strtoupper(setting_system('title'))?></h2>
-          <img class="qrcode" src="<?=base_url()."/_template/files/".enc_uri($row->kode_person)."/qr_".$row->kode_invest.".png"?>">
+          <img class="qrcode" src="<?=base_url()."/_template/files/".enc_uri($row->kode_person)."/".$row->qr_code?>">
       </header>
 
       <div class="kop_surat" style="margin-top:20px;">
         <table style="font-size:14px;">
+          <?php
+            if (strtoupper(profile("bank"))=="BCA") {
+              $kd_bank = "10";
+            }elseif (strtoupper(profile("bank"))=="BRI") {
+              $kd_bank = "20";
+            }elseif (strtoupper(profile("bank"))=="MANDIRI") {
+              $kd_bank = "30";
+            }
+           ?>
           <tr>
             <td>No.Surat</td>
-            <td>: <?=$row->kode_invest?>/DEPO/MKS/CHBL/<?=getRomawi(date('m',strtotime($row->kontrak_start)))?>/<?=date('Y',strtotime($row->kontrak_start))?></td>
+            <td>: ..................../DEPO/MKS/CHBL/<?=getRomawi(date('m',strtotime($row->kontrak_start)))?>/<?=date('Y',strtotime($row->kontrak_start))?></td>
           </tr>
 
           <tr>
@@ -192,11 +201,11 @@
           <p style="text-align:center;">
             <b>P A S A L 1</b><br>
             ALOKASI DEPOSIT YANG DIKELOLA<br>
-            Pihak kedua (2) mendepositkan Modal traiding sebesar Rp.<?=format_rupiah($row->amount)?>,- (<?=terbilang($row->amount)?> Rupiah) <br>untuk dikelola dengan rincian sebagai berikut :
+            Pihak kedua (2) mendepositkan Modal trading sebesar Rp.<?=format_rupiah($row->amount)?>,- (<?=terbilang($row->amount)?> Rupiah) <br>untuk dikelola dengan rincian sebagai berikut :
           </p>
 
           <ol style="list-style-type: decimal;text-align:justify;">
-            <li>Pihak pertama (1) bertanggung jawab membagikan Sharing Profit traiding forex dengan estimasi 1% perhari selama 20 hari masa kerja traiding dalam sebulan.</li>
+            <li>Pihak pertama (1) bertanggung jawab membagikan Sharing Profit trading forex dengan estimasi 1% perhari selama 20 hari masa kerja trading dalam sebulan.</li>
             <li>Pihak pertama (1) bertanggung jawab mengelola deposit dari Pihak kedua (II) untuk di perdagangkan di Trading Forex.</li>
             <li>Proses pembagian profit akan dilaksanakan dalam kisaran tanggal 1-5 setiap bulannya selama masa kontrak perjanjian ini berjalan.  </li>
           </ol>
@@ -271,16 +280,16 @@
       </div>
 
 
-      <div class="ttd" style="position:absolute;bottom:40px;font-size:12px;">
+      <div class="ttd" style="position:absolute;bottom:100px;font-size:12px;">
         <span>Tempat : Makassar, <?=date_indo($row->kontrak_start)?></span><br>
         <span>Pihak Pertama (1)</span><br>
         <span><?=strtoupper(setting_system("title"))?></span>
         <br><br><br><br><br><br><br>
-        <span>Andi Awaluddin Buchri</span>
+        <span></span>
       </div>
 
 
-      <div class="ttd2" style="position:absolute;right:0;bottom:40px;font-size:12px;">
+      <div class="ttd2" style="position:absolute;right:0;bottom:100px;font-size:12px;">
         <span>&nbsp;</span><br>
         <span>Pihak Kedua (2)</span><br>
         <span>Mitra</span>

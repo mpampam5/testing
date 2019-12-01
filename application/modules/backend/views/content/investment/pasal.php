@@ -1,9 +1,9 @@
 <h5 class="text-center">P A S A L 1</h5>
 <p class="text-center">ALOKASI DEPOSIT YANG DIKELOLA</p>
-<p>Pihak kedua (2) mendepositkan Modal traiding sebesar Rp...............,- (Terbilang)
+<p>Pihak kedua (2) mendepositkan Modal trading sebesar Rp...............,- (Terbilang)
 untuk dikelola dengan rincian sebagai berikut :</p>
 <ol style="list-style-type: decimal;text-align:justify;">
-  <li>Pihak pertama (1) bertanggung jawab membagikan Sharing Profit traiding forex dengan estimasi 1% perhari selama 20 hari masa kerja traiding dalam sebulan.</li>
+  <li>Pihak pertama (1) bertanggung jawab membagikan Sharing Profit trading forex dengan estimasi 1% perhari selama 20 hari masa kerja trading dalam sebulan.</li>
   <li>Pihak pertama (1) bertanggung jawab mengelola deposit dari Pihak kedua (II) untuk di perdagangkan di Trading Forex.</li>
   <li>Proses pembagian profit akan dilaksanakan dalam kisaran tanggal 1-5 setiap bulannya selama masa kontrak perjanjian ini berjalan.  </li>
 </ol>

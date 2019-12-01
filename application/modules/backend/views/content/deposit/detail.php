@@ -78,8 +78,26 @@
             <li>Silahkan Transfer Sebesar <b>Rp.<?=format_rupiah(($row->amount+$row->biaya_admin))?></b></li>
             <li>Untuk mempermudah proses verifikasi, silahkan transfer sesuai nominal di atas.</li>
           </ul>
-          
-          <p style="font-size:12px;color:#5e5e5e;font-weight:bold;">Silahkan kirim bukti transfer anda di Whatsapp Admin +6285806234028</p>
+
+          <p style="font-size:12px;color:#5e5e5e;font-weight:bold;">Silahkan kirim bukti transfer anda pada kontak di bawah: </p>
+          <table class="table table-striped table-bordered">
+
+              <!-- <tr>
+                <th style="font-size:12px;padding:7px;">Nama</th>
+                <th style="font-size:12px;padding:7px;">Email</th>
+                <th style="font-size:12px;padding:7px;">Telepon (Whatsapp)</th>
+              </tr> -->
+
+
+            <?php $admin = $this->db->get("admin"); ?>
+            <?php foreach ($admin->result() as $adm): ?>
+            <tr>
+              <td style="font-size:12px;"><?=$adm->nama?></td>
+              <td style="font-size:12px;"><?=$adm->email?></td>
+              <td style="font-size:12px;"><?=$adm->telepon?></td>
+            </tr>
+          </table>
+        <?php endforeach; ?>
         <?php endif; ?>
 
 

@@ -64,7 +64,15 @@
                   <div class="col-sm-4">
                     <div class="form-group">
                       <label for="">Ukuran Baju</label>
-                      <input type="text" class="form-control" id="ukuran_baju" name="ukuran_baju" placeholder="S,M,L,XL,XXL" value="<?=$row->ukuran_baju?>">
+                      <select class="form-control" id="ukuran_baju" name="ukuran_baju">
+                        <option value="">-- pilih ukuran baju--</option>
+                        <option <?=strtoupper($row->ukuran_baju)=="S" ? "selected" : ""?> value="S">S</option>
+                        <option <?=strtoupper($row->ukuran_baju)=="M" ? "selected" : ""?> value="M">M</option>
+                        <option <?=strtoupper($row->ukuran_baju)=="L" ? "selected" : ""?> value="L">L</option>
+                        <option <?=strtoupper($row->ukuran_baju)=="XL" ? "selected" : ""?> value="XL">XL</option>
+                        <option <?=strtoupper($row->ukuran_baju)=="XXL" ? "selected" : ""?> value="XXL">XXL</option>
+                      </select>
+                      <!-- <input type="text" class="form-control" id="ukuran_baju" name="ukuran_baju" placeholder="S,M,L,XL,XXL" value="<?=$row->ukuran_baju?>"> -->
                     </div>
                   </div>
 
@@ -157,7 +165,12 @@
           <div class="col-sm-4">
             <div class="form-group">
               <label for="">Bank</label>
-              <input type="text" class="form-control" id="bank" name="bank" placeholder="Bank" value="<?=$row->bank?>">
+              <select class="form-control" id="bank" name="bank">
+                <option value="">-- pilih BANK --</option>
+                <option <?=strtoupper($row->bank)=="BRI" ?"selected":""?> value="BRI">BRI</option>
+                <option <?=strtoupper($row->bank)=="BCA" ?"selected":""?> value="BCA">BCA</option>
+                <option <?=strtoupper($row->bank)=="MANDIRI" ?"selected":""?> value="MANDIRI">MANDIRI</option>
+              </select>
             </div>
           </div>
 
