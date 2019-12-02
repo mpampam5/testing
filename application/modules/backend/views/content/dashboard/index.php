@@ -239,6 +239,81 @@
           </div>
 
 
+          <div class="row mt-3">
+            <div class="col-md-12 mx-auto">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Investment History</h5>
+                  <div class="table-responsive" style="min-height:100px!important">
+                    <table id="table-invest" class="table table-bordered">
+                      <thead class="bg-danger text-white">
+                        <tr>
+                          <th>KD.INVESTMENT</th>
+                          <th>Date Invest</th>
+                          <th>Amount</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <?php
+                      $invest = $this->db->select("investment.id_invest,
+                                              	investment.kode_invest,
+                                              	investment.id_person,
+                                              	investment.amount,
+                                              	investment.status,
+                                              	investment.created ")
+                                     ->from("investment")
+                                     ->where("investment.id_person",sess("id_person"))
+                                     ->order_by("id_invest","desc")
+                                     ->limit(5)
+                                     ->get();
+                       ?>
+                      <tbody>
+                          <?php foreach ($invest->result() as $invest): ?>
+                            <tr>
+                              <td class="text-primary"><?=$invest->kode_invest?></td>
+                              <td><?=date("d-m-Y",strtotime($invest->created))?></td>
+                              <td>Rp.<?=format_rupiah($invest->amount)?></td>
+                              <td>
+                                <?php if ($invest->status=="ongoing"): ?>
+                                  <span class="badge badge-success">ongoing</span>
+                                  <?php else: ?>
+                                  <span class="badge badge-danger">done</span>
+                                <?php endif; ?>
+                              </td>
+                            </tr>
+                          <?php endforeach; ?>
+
+
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="col-md-6 mx-auto mt-5">
+
+                  <h5 style="text-align:center;color:#616161;font-size:14px;">CS CRO (Costumer Relation Officier)</h5>
+                  <div class="table-responsive" style="min-height:100px!important">
+                    <table class="table table-bordered bg-white">
+                      <?php $admin = $this->db->get("admin"); ?>
+                      <?php foreach ($admin->result() as $adm): ?>
+                      <tr>
+                        <td style="font-size:14px!important;"><?=$adm->nama?></td>
+                        <td style="font-size:14px!important;"><?=$adm->email?></td>
+                        <td style="font-size:14px!important;"><?=$adm->telepon?></td>
+                      </tr>
+                    <?php endforeach; ?>
+                  </table>
+                  </div>
+
+            </div>
+          </div>
+
+
 
 <script type="text/javascript">
 <?php if (setting_financial("invesment_status")=="on"): ?>

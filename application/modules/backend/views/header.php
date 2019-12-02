@@ -36,6 +36,11 @@
             <a class="navbar-brand brand-logo" href="<?=site_url("backend/dashboard")?>"><img src="<?=base_url()?>_template/front/images/logo-white.png" alt="logo"/></a>
             <a class="navbar-brand brand-logo-mini" href="<?=site_url("backend/dashboard")?>"><img src="<?=base_url()?>_template/front/images/cheeta.png" alt="logo"/></a>
           </div>
+
+          <div class="info-layanan">
+            Pelayanan CS Kami Senin – Jumat. Pukul : 09:00 sampai 21:00 Wita.
+          </div>
+          
           <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
             <!-- <ul class="navbar-nav navbar-nav-right">
               <li class="nav-item dropdown">
@@ -172,6 +177,8 @@
         </div>
       </nav>
     </div>
+
+
 
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">

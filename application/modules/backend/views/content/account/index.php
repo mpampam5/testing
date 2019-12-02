@@ -176,6 +176,7 @@
     </div>
   </div>
 
+
   <div class="col-md-8 mx-auto mb-2">
     <div class="card">
       <div class="card-body">
@@ -189,7 +190,8 @@
 
 
   <div class="col-md-8 mx-auto mb-2">
-      <a id="rst_pwd" href="<?=site_url("backend/account/reset_password")?>" class="badge badge-sm badge-warning text-white"  id="reset_password"> <i class="ti-key"></i> UPDATE PASSWORD</a>
+      <a href="<?=site_url("backend/account/berkas")?>" class="badge badge-sm badge-warning text-white"> <i class="ti-file"></i> UPDATE BERKAS</a>
+      <a id="rst_pwd" href="<?=site_url("backend/account/reset_password")?>" class="badge badge-sm badge-warning text-white"> <i class="ti-key"></i> UPDATE PASSWORD</a>
   </div>
 
 

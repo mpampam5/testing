@@ -279,4 +279,22 @@ select.form-control, select.asColorPicker-input, .dataTables_wrapper select, .js
   .horizontal-menu .top-navbar .navbar-brand-wrapper .navbar-brand img{
     height: 50px;
   }
+
+  .info-layanan{
+    right: 90px!important;
+    text-align: center;
+    font-size: 11px;
+    width: 50%;
+  }
+
+
+
+}
+
+
+
+.info-layanan{
+  position: absolute;
+  right: 30px;
+  color: #d0d0d0;
 }

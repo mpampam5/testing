@@ -164,9 +164,9 @@ class Person extends MY_Controller{
                 $this->load->helper('pass_has');
                 $token = enc_uri(date('dmYhis'));
                 $data_auth = ["id_person" => $id_person,
-                              "username" => $this->input->post("username",true),
+                              "username" => strtolower($this->input->post("username",true)),
                               "token" => $token,
-                              "password"    => pass_encrypt($token,$this->input->post("username")),
+                              "password"    => pass_encrypt($token,strtolower($this->input->post("username",true))),
                               "created"       => date('Y-m-d H:i:s')
                 ];
                 $this->model->get_insert("auth_person",$data_auth);

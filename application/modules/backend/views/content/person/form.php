@@ -149,7 +149,12 @@
           <div class="col-sm-6">
             <div class="form-group">
               <label for="">Bank</label>
-              <input type="text" class="form-control" id="bank" name="bank" placeholder="Bank" value="<?=$bank?>">
+              <select class="form-control" id="bank" name="bank">
+                <option value="">-- pilih BANK --</option>
+                <option value="BRI">BRI</option>
+                <option value="BCA">BCA</option>
+                <option value="MANDIRI">MANDIRI</option>
+              </select>
             </div>
           </div>
 

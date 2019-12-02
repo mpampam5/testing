@@ -124,160 +124,160 @@ class Account extends MY_Controller{
           }
 
 
-          // function berkas()
-          // {
-          //   $this->template->set_title("Ubah Berkas");
-          //   $data["row"] = $this->model->get_where_person();
-          //   $data['action'] = site_url("backend/account/is_complate");
-          //   $this->template->view("content/account/berkas",$data);
-          // }
-          //
-          //
-          //
-          // function is_complate()
-          // {
-          //   if ($this->input->is_ajax_request()) {
-          //     $json = array('success'=>false, 'alert'=>array(), "url"=>array());
-          //     $this->form_validation->set_rules("foto_personal","&nbsp;*","trim|xss_clean|required|callback__cek_file");
-          //     $this->form_validation->set_rules("foto_ktp","&nbsp;*","trim|xss_clean|required|callback__cek_file");
-          //     $this->form_validation->set_rules("foto_rek","&nbsp;*","trim|xss_clean|required|callback__cek_file");
-          //     $this->form_validation->set_error_delimiters('<label class="error ml-1 text-danger" style="font-size:9px">','</label>');
-          //     if ($this->form_validation->run()) {
-          //       $data = [
-          //                 "is_complate_berkas"  => "1"
-          //               ];
-          //       $this->model->get_update("tb_person",$data,["id_person" => sess("id_person")]);
-          //
-          //       $json['alert'] = "update data successfully";
-          //       $json['success'] =  true;
-          //       $json['url']  = site_url("backend/account");
-          //     }else {
-          //       foreach ($_POST as $key => $value)
-          //         {
-          //           $json['alert'][$key] = form_error($key);
-          //         }
-          //     }
-          //     echo json_encode($json);
-          //   }
-          // }
+          function berkas()
+          {
+            $this->template->set_title("Ubah Berkas");
+            $data["row"] = $this->model->get_where_person();
+            $data['action'] = site_url("backend/account/is_complate");
+            $this->template->view("content/account/berkas",$data);
+          }
 
-          // function _cek_file($str)
-          // {
-          //     $filename = "./_template/files/".enc_uri(profile("kode_person"))."/".$str;
-          //   if (file_exists($filename)){
-          //       return true;
-          //   }else{
-          //     $this->form_validation->set_message('_cek_file', '* silahkan upload berkas');
-          //     return false;
-          //   }
-          // }
-          //
-          // function do_upload()
-          //       {
-          //         if ($this->input->is_ajax_request()) {
-          //             $json = array('success' =>false , "alert"=> array(), "file_name"=>array());
-          //             $image = "foto_".enc_uri(profile("kode_person")).".".pathinfo($_FILES['foto_personal']['name'], PATHINFO_EXTENSION);
-          //             if (!file_exists('./_template/files/'.enc_uri(profile('kode_person')))) {
-          //                 mkdir('./_template/files/'.enc_uri(profile('kode_person')), 0777, true);
-          //             }
-          //             $config['upload_path'] = "./_template/files/".enc_uri(profile('kode_person'))."/";
-          //             $config['allowed_types'] = 'jpg';
-          //             $config['overwrite'] = true;
-          //             $config['max_size']  = '1024';
-          //             $config['file_name']  = "$image";
-          //
-          //
-          //             $this->load->library('upload', $config);
-          //
-          //             if (!$this->upload->do_upload('foto_personal')){
-          //                 $json['header_alert'] = "error";
-          //                 $json['alert'] = "File tidak valid, format file harus jpg & ukuran maksimal 1mb";
-          //             }else {
-          //                 $where = array('id_person' => sess("id_person"));
-          //                 $this->model->get_update("tb_person",["file_foto"=>$image],$where);
-          //                 $json['header_alert'] = "success";
-          //                 $json['file_name'] = $image;
-          //                 $json['alert'] = "File upload successfully.";
-          //                 $json['success'] = true;
-          //             }
-          //
-          //             echo json_encode($json);
-          //
-          //       }
-          //     }
-          //
-          //
-          // function do_upload_ktp()
-          //       {
-          //         if ($this->input->is_ajax_request()) {
-          //             $json = array('success' =>false , "alert"=> array(), "file_name"=>array());
-          //             $image = "ktp_".enc_uri(profile('kode_person')).".".pathinfo($_FILES['foto_ktp']['name'], PATHINFO_EXTENSION);
-          //             if (!file_exists('./_template/files/'.enc_uri(profile('kode_person')))) {
-          //                 mkdir('./_template/files/'.enc_uri(profile('kode_person')), 0777, true);
-          //             }
-          //             $config['upload_path'] = "./_template/files/".enc_uri(profile('kode_person'))."/";
-          //             $config['allowed_types'] = 'jpg';
-          //             $config['overwrite'] = true;
-          //             $config['max_size']  = '1024';
-          //             $config['file_name']  = "$image";
-          //
-          //
-          //             $this->load->library('upload', $config);
-          //
-          //             if (!$this->upload->do_upload('foto_ktp')){
-          //                 $json['header_alert'] = "error";
-          //                 $json['alert'] = "File tidak valid, format file harus jpg & ukuran maksimal 1mb";
-          //             }else {
-          //                 $where = array('id_person' => sess("id_person"));
-          //                 $this->model->get_update("tb_person",["file_ktp"=>$image],$where);
-          //                 $json['header_alert'] = "success";
-          //                 $json['file_name'] = $image;
-          //                 $json['alert'] = "File upload successfully.";
-          //                 $json['success'] = true;
-          //             }
-          //
-          //             echo json_encode($json);
-          //
-          //       }
-          //     }
-          //
-          //
-          //
-          //
-          //
-          //     function do_upload_rek()
-          //           {
-          //             if ($this->input->is_ajax_request()) {
-          //                 $json = array('success' =>false , "alert"=> array(), "file_name"=>array());
-          //                 $image = "rek_".enc_uri(profile('kode_person')).".".pathinfo($_FILES['foto_rek']['name'], PATHINFO_EXTENSION);
-          //                 if (!file_exists('./_template/files/'.enc_uri(profile('kode_person')))) {
-          //                     mkdir('./_template/files/'.enc_uri(profile('kode_person')), 0777, true);
-          //                 }
-          //                 $config['upload_path'] = "./_template/files/".enc_uri(profile('kode_person'))."/";
-          //                 $config['allowed_types'] = 'jpg';
-          //                 $config['overwrite'] = true;
-          //                 $config['max_size']  = '1024';
-          //                 $config['file_name']  = "$image";
-          //
-          //
-          //                 $this->load->library('upload', $config);
-          //
-          //                 if (!$this->upload->do_upload('foto_rek')){
-          //                     $json['header_alert'] = "error";
-          //                     $json['alert'] = "File tidak valid, format file harus jpg & ukuran maksimal 1mb";
-          //                 }else {
-          //                     $where = array('id_person' => sess("id_person"));
-          //                     $this->model->get_update("rekening_person",["file_foto_rek"=>$image],$where);
-          //                     $json['header_alert'] = "success";
-          //                     $json['file_name'] = $image;
-          //                     $json['alert'] = "File upload successfully.";
-          //                     $json['success'] = true;
-          //                 }
-          //
-          //                 echo json_encode($json);
-          //
-          //           }
-          //         }
+
+
+          function is_complate()
+          {
+            if ($this->input->is_ajax_request()) {
+              $json = array('success'=>false, 'alert'=>array(), "url"=>array());
+              $this->form_validation->set_rules("foto_personal","&nbsp;*","trim|xss_clean|required|callback__cek_file");
+              $this->form_validation->set_rules("foto_ktp","&nbsp;*","trim|xss_clean|required|callback__cek_file");
+              $this->form_validation->set_rules("foto_rek","&nbsp;*","trim|xss_clean|required|callback__cek_file");
+              $this->form_validation->set_error_delimiters('<label class="error ml-1 text-danger" style="font-size:9px">','</label>');
+              if ($this->form_validation->run()) {
+                $data = [
+                          "is_complate_berkas"  => "1"
+                        ];
+                $this->model->get_update("tb_person",$data,["id_person" => sess("id_person")]);
+
+                $json['alert'] = "update data successfully";
+                $json['success'] =  true;
+                $json['url']  = site_url("backend/account");
+              }else {
+                foreach ($_POST as $key => $value)
+                  {
+                    $json['alert'][$key] = form_error($key);
+                  }
+              }
+              echo json_encode($json);
+            }
+          }
+
+          function _cek_file($str)
+          {
+              $filename = "./_template/files/".enc_uri(profile("kode_person"))."/".$str;
+            if (file_exists($filename)){
+                return true;
+            }else{
+              $this->form_validation->set_message('_cek_file', '* silahkan upload berkas');
+              return false;
+            }
+          }
+
+          function do_upload()
+                {
+                  if ($this->input->is_ajax_request()) {
+                      $json = array('success' =>false , "alert"=> array(), "file_name"=>array());
+                      $image = "foto_".enc_uri(profile("kode_person")).".".pathinfo($_FILES['foto_personal']['name'], PATHINFO_EXTENSION);
+                      if (!file_exists('./_template/files/'.enc_uri(profile('kode_person')))) {
+                          mkdir('./_template/files/'.enc_uri(profile('kode_person')), 0777, true);
+                      }
+                      $config['upload_path'] = "./_template/files/".enc_uri(profile('kode_person'))."/";
+                      $config['allowed_types'] = 'jpg';
+                      $config['overwrite'] = true;
+                      $config['max_size']  = '1024';
+                      $config['file_name']  = "$image";
+
+
+                      $this->load->library('upload', $config);
+
+                      if (!$this->upload->do_upload('foto_personal')){
+                          $json['header_alert'] = "error";
+                          $json['alert'] = "File tidak valid, format file harus jpg & ukuran maksimal 1mb";
+                      }else {
+                          $where = array('id_person' => sess("id_person"));
+                          $this->model->get_update("tb_person",["file_foto"=>$image],$where);
+                          $json['header_alert'] = "success";
+                          $json['file_name'] = $image;
+                          $json['alert'] = "File upload successfully.";
+                          $json['success'] = true;
+                      }
+
+                      echo json_encode($json);
+
+                }
+              }
+
+
+          function do_upload_ktp()
+                {
+                  if ($this->input->is_ajax_request()) {
+                      $json = array('success' =>false , "alert"=> array(), "file_name"=>array());
+                      $image = "ktp_".enc_uri(profile('kode_person')).".".pathinfo($_FILES['foto_ktp']['name'], PATHINFO_EXTENSION);
+                      if (!file_exists('./_template/files/'.enc_uri(profile('kode_person')))) {
+                          mkdir('./_template/files/'.enc_uri(profile('kode_person')), 0777, true);
+                      }
+                      $config['upload_path'] = "./_template/files/".enc_uri(profile('kode_person'))."/";
+                      $config['allowed_types'] = 'jpg';
+                      $config['overwrite'] = true;
+                      $config['max_size']  = '1024';
+                      $config['file_name']  = "$image";
+
+
+                      $this->load->library('upload', $config);
+
+                      if (!$this->upload->do_upload('foto_ktp')){
+                          $json['header_alert'] = "error";
+                          $json['alert'] = "File tidak valid, format file harus jpg & ukuran maksimal 1mb";
+                      }else {
+                          $where = array('id_person' => sess("id_person"));
+                          $this->model->get_update("tb_person",["file_ktp"=>$image],$where);
+                          $json['header_alert'] = "success";
+                          $json['file_name'] = $image;
+                          $json['alert'] = "File upload successfully.";
+                          $json['success'] = true;
+                      }
+
+                      echo json_encode($json);
+
+                }
+              }
+
+
+
+
+
+              function do_upload_rek()
+                    {
+                      if ($this->input->is_ajax_request()) {
+                          $json = array('success' =>false , "alert"=> array(), "file_name"=>array());
+                          $image = "rek_".enc_uri(profile('kode_person')).".".pathinfo($_FILES['foto_rek']['name'], PATHINFO_EXTENSION);
+                          if (!file_exists('./_template/files/'.enc_uri(profile('kode_person')))) {
+                              mkdir('./_template/files/'.enc_uri(profile('kode_person')), 0777, true);
+                          }
+                          $config['upload_path'] = "./_template/files/".enc_uri(profile('kode_person'))."/";
+                          $config['allowed_types'] = 'jpg';
+                          $config['overwrite'] = true;
+                          $config['max_size']  = '1024';
+                          $config['file_name']  = "$image";
+
+
+                          $this->load->library('upload', $config);
+
+                          if (!$this->upload->do_upload('foto_rek')){
+                              $json['header_alert'] = "error";
+                              $json['alert'] = "File tidak valid, format file harus jpg & ukuran maksimal 1mb";
+                          }else {
+                              $where = array('id_person' => sess("id_person"));
+                              $this->model->get_update("rekening_person",["file_foto_rek"=>$image],$where);
+                              $json['header_alert'] = "success";
+                              $json['file_name'] = $image;
+                              $json['alert'] = "File upload successfully.";
+                              $json['success'] = true;
+                          }
+
+                          echo json_encode($json);
+
+                    }
+                  }
 
 
 

@@ -96,8 +96,8 @@
               <td style="font-size:12px;"><?=$adm->email?></td>
               <td style="font-size:12px;"><?=$adm->telepon?></td>
             </tr>
-          </table>
         <?php endforeach; ?>
+      </table>
         <?php endif; ?>
 
 
@@ -108,7 +108,7 @@
 
         <?php if ($row->status=="process"): ?>
           <hr>
-          <p class="text-center" style="font-size:12px;color:#5e5e5e;">Transaksi akan segera di proses. silahkan menunggu 2x24 jam. Terimakasih</p>
+          <p class="text-center" style="font-size:12px;color:#5e5e5e;">Transaksi akan segera di proses. silahkan menunggu 3x24 jam. Terimakasih</p>
           <p class="text-center">
             <a href="<?=site_url("backend/deposit/cancel/$row->id_deposit")?>" class="btn btn-danger btn-sm mt-4" id="cancel">Cancel</a>
           </p>
