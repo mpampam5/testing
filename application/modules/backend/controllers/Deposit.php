@@ -89,9 +89,9 @@ function cancel($id)
 {
   if ($this->input->is_ajax_request()) {
     $keterangan = [
-      "approved_by" => "member",
-      "time_approved" => date("Y-m-d H:i:s"),
-      "keteragan" => "cancel"
+      "di cancel oleh" => "member",
+      "waktu" => date("d-m-Y H:i:s"),
+      "keterangan" => "cancel"
     ];
 
     if ($this->model->get_update('deposit',["status"=>"cancel","keterangan"=>json_encode($keterangan)],["id_deposit"=>$id,"id_person"=>sess("id_person")])) {
