@@ -74,19 +74,29 @@ class Investment extends MY_Controller{
               $masa_kontrak = setting_financial("invesment_kontrak");
               $tgl = date("d");
 
-              if ($tgl >= "01" AND $tgl <= "5") {
+              // if ($tgl >= "01" AND $tgl <= "5") {
+              //   $kontrak_start = date("Y-m")."-01";
+              //   $group = 1;
+              // }elseif ($tgl >= "06" AND $tgl <= "14") {
+              //    $kontrak_start = date('Y-m-d', strtotime("+1 month", strtotime(date("Y-m")."-15")));
+              //   $group = 15;
+              // } elseif ($tgl >= "15" AND $tgl <= "20") {
+              //   $kontrak_start = date("Y-m")."-15";
+              //   $group = 15;
+              // }elseif ($tgl >= "21" AND $tgl <= "31") {
+              //   $kontrak_start = date('Y-m-d', strtotime("+1 month", strtotime(date("Y-m")."-01")));
+              //   $group = 1;
+              // } else {
+              //   $kontrak_start = 000;
+              // }
+
+              if ($tgl >= "01" AND $tgl <= "14") {
                 $kontrak_start = date("Y-m")."-01";
                 $group = 1;
-              }elseif ($tgl >= "06" AND $tgl <= "14") {
-                 $kontrak_start = date('Y-m-d', strtotime("+1 month", strtotime(date("Y-m")."-15")));
-                $group = 15;
-              } elseif ($tgl >= "15" AND $tgl <= "20") {
+              }elseif ($tgl >= "15" AND $tgl <= "31") {
                 $kontrak_start = date("Y-m")."-15";
                 $group = 15;
-              }elseif ($tgl >= "21" AND $tgl <= "31") {
-                $kontrak_start = date('Y-m-d', strtotime("+1 month", strtotime(date("Y-m")."-01")));
-                $group = 1;
-              } else {
+              }else {
                 $kontrak_start = 000;
               }
 

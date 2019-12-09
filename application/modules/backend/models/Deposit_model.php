@@ -21,7 +21,7 @@ class Deposit_model extends MY_Model{
     $this->datatables->join("setting_rekening","setting_rekening.id_rekening = deposit.metode_pembayaran");
     $this->datatables->where("deposit.id_person",sess("id_person"));
     if ($status!="approved") {
-      $this->datatables->where("deposit.status !=","approved");
+      $this->datatables->where("deposit.status","process");
     }else {
       $this->datatables->where("deposit.status","approved");
     }
@@ -51,7 +51,7 @@ class Deposit_model extends MY_Model{
       $this->db->where("deposit.id_deposit",$id);
       $this->db->where("deposit.id_person",sess("id_person"));
       if ($status!="approved") {
-        $this->db->where("deposit.status !=","approved");
+        $this->db->where("deposit.status","process");
       }else {
         $this->db->where("deposit.status","approved");
       }

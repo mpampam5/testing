@@ -126,15 +126,15 @@ function _cek_deposit($str)
 
 function _kode()
     {
-      $q = $this->db->query("SELECT MAX(RIGHT(kode_transaksi,2)) AS kd_trans FROM deposit WHERE DATE(created)=CURDATE()");
+      $q = $this->db->query("SELECT MAX(RIGHT(kode_transaksi,4)) AS kd_trans FROM deposit WHERE DATE(created)=CURDATE()");
           $kd = "";
           if($q->num_rows()>0){
               foreach($q->result() as $k){
                   $tmp = ((int)$k->kd_trans)+1;
-                  $kd = sprintf("%02s", $tmp);
+                  $kd = sprintf("%04s", $tmp);
               }
           }else{
-              $kd = "01";
+              $kd = "0001";
           }
           return "DP".date('dmy')."-".$kd;
     }

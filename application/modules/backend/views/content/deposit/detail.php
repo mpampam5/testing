@@ -35,6 +35,11 @@
           </tr>
 
           <tr>
+            <th>Nama</th>
+            <td>: <?=profile("nama")?></td>
+          </tr>
+
+          <tr>
             <th>Status</th>
             <td>:
                   <?php if ($row->status=="approved"): ?>

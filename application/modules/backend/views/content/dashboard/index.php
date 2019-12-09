@@ -299,7 +299,10 @@
                   <h5 style="text-align:center;color:#616161;font-size:14px;">CS CRO (Costumer Relation Officier)</h5>
                   <div class="table-responsive" style="min-height:100px!important">
                     <table class="table table-bordered bg-white">
-                      <?php $admin = $this->db->get("admin"); ?>
+                      <?php
+                            $this->db->order_by("id","DESC");
+                            $admin = $this->db->get("admin");
+                       ?>
                       <?php foreach ($admin->result() as $adm): ?>
                       <tr>
                         <td style="font-size:14px!important;"><?=$adm->nama?></td>
