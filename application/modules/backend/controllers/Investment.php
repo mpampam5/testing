@@ -156,6 +156,14 @@ class Investment extends MY_Controller{
                $params['savename'] = FCPATH.$config['imagedir'].$image_name; //simpan image QR CODE ke folder assets/images/
                $this->ciqrcode->generate($params); // fungsi untuk generate QR CODE
 
+               if ($amount >= 5000000) {
+                    $id_persons = sess('id_person');
+                    $insert_ukuran_baju = array('id_person' => $id_persons,
+                                                'ukuran_baju' => profile("ukuran_baju")
+                                                );
+                    $this->model->get_insert("pengeluaran_baju",$insert_ukuran_baju);
+                  }
+
 
                $json['header_alert'] = "success";
                $json['alert'] = "Send To Investment successfully";

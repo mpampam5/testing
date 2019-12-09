@@ -54,6 +54,7 @@ if ( ! function_exists('profile'))
                                 tb_person.waris_hubungan,
                                 tb_person.waris_telepon,
                                 tb_person.waris_alamat,
+                                tb_person.ukuran_baju,
                                 tb_person.is_active,
                                 tb_person.is_complate,
                                 tb_person.is_complate_berkas,
