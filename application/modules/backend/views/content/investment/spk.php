@@ -207,7 +207,16 @@
           <ol style="list-style-type: decimal;text-align:justify;">
             <li>Pihak pertama (1) bertanggung jawab membagikan Sharing Profit trading forex dengan estimasi 1% perhari selama 20 hari masa kerja trading dalam sebulan.</li>
             <li>Pihak pertama (1) bertanggung jawab mengelola deposit dari Pihak kedua (II) untuk di perdagangkan di Trading Forex.</li>
-            <li>Proses pembagian profit akan dilaksanakan dalam kisaran tanggal 1-5 setiap bulannya selama masa kontrak perjanjian ini berjalan.  </li>
+            <?php
+            $tgl = date("d",strtotime($row->created));
+             if ($tgl >= "01" AND $tgl <= "14") {
+                $kontrak_profit = "1 - 5";
+              }elseif ($tgl >= "15" AND $tgl <= "31") {
+                $kontrak_profit = "15 - 20";
+              }
+
+               ?>
+            <li>Proses pembagian profit akan dilaksanakan dalam kisaran tanggal <?=$kontrak_profit?> setiap bulannya selama masa kontrak perjanjian ini berjalan.  </li>
           </ol>
 
           <p style="text-align:center;line-height:18px;">
