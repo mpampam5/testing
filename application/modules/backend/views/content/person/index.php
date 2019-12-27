@@ -73,6 +73,7 @@
               <thead class=" bg-black text-silver">
                 <tr>
                   <th>Data Personal</th>
+                  <th>Balance</th>
                   <th>Status</th>
                   <th class="text-center">#</th>
                 </tr>
@@ -128,8 +129,12 @@ $(document).ready(function(){
             "orderable": false
         },
         {
+            "targets": 2, //first column / numbering column
+            "orderable": false
+        },
+        {
             "className": "text-center",
-            "targets": 2,
+            "targets": 3,
             "orderable": false,
         },
         ],

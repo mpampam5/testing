@@ -50,7 +50,7 @@ class Person extends MY_Controller{
                     <span class="data-person-mem"><i class="ti-star"></i> '.strtoupper($rows->level).'</span>
                     <span class="data-person-mem"><i class="ti-user"></i> '.$rows->nama.'</span>
                     <span class="data-person-mem"><i class="ti-pin2"></i> '.$rows->username.'</span>';
-
+          $row[] = "Rp.".format_rupiah(balance_member($rows->id_person));
           $row[] = ($rows->is_active=="1") ? '<span class="badge badge-success"> Aktif</span>':'<span class="badge badge-danger">Tidak Aktif</span>';
 
           $row[] = '<a href="'.site_url("backend/person/detail/".enc_uri($rows->id_person)).'" class="badge badge-success text-white" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="DETAIL"><i class="ti-zoom-in"></i></a>

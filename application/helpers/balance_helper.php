@@ -1,12 +1,55 @@
 <?php if (!defined("BASEPATH")) exit("No direct script access allowed");
 
+
 function balance()
 {
-
   $deposit = total_deposit();
   $investment = total_investment();
   $total = $deposit-$investment;
   return $total;
+}
+
+function balance_member($id)
+{
+  $deposit = total_deposit_member($id);
+  $investment = total_investment_member($id);
+  $total = $deposit-$investment;
+  return $total;
+}
+
+function total_deposit_member($id)
+{
+  $ci=& get_instance();
+  $qry = $ci->db->query("SELECT
+                          	deposit.id_deposit,
+                          	deposit.id_person,
+                          	Sum( deposit.amount_acc) AS amount,
+                          	deposit.status
+                          FROM
+                          	deposit
+                          WHERE
+                          	deposit.id_person = ".$id." AND deposit.status = 'approved'
+                          ")->row();
+  return $qry->amount;
+}
+
+
+function total_investment_member($id)
+{
+  $ci=& get_instance();
+  $qry = $ci->db->query("SELECT
+                          	investment.id_invest,
+                          	investment.kode_invest,
+                          	investment.id_person,
+                          	Sum( investment.amount ) AS amount,
+                          	investment.status,
+                          	investment.created
+                          FROM
+                          	investment
+                          WHERE
+                          	investment.id_person = ".$id." AND
+                            investment.status = 'ongoing'")->row();
+  return $qry->amount;
 }
 
 
